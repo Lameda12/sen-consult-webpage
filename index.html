@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Senior Consulting Agents</title>
+<meta name="description" content="54 senior consulting agents, 11 commands and 2 skills you can install into Claude Code, Codex, Gemini CLI, Cursor and any agent that supports Agent Skills. Fewer meetings, more agents arguing.">
+<meta property="og:title" content="Senior Consulting Agents">
+<meta property="og:description" content="Because one AI agent making things up wasn't enough. 54 senior personas, one install command.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23ff4f1f'/%3E%3Cpath d='M9 22V10h3v12zm5.5 0V14h3v8zm5.5 0v-5h3v5z' fill='%2314130f'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f3efe6;
+  --paper-2: #ebe5d8;
+  --card: #fbf9f4;
+  --ink: #14130f;
+  --ink-2: #4a463d;
+  --muted: #7a7466;
+  --rule: #d6cfbf;
+  --accent: #ff4f1f;
+  --accent-ink: #14130f;
+  --code-bg: #14130f;
+  --code-ink: #efe9dc;
+  --code-dim: #8f8877;
+  --good: #1f7a4d;
+  --serif: "Instrument Serif", Georgia, serif;
+  --sans: "IBM Plex Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12110e; --paper-2: #1a1915; --card: #1d1b17;
+    --ink: #efe9dc; --ink-2: #c2bbab; --muted: #8f8877; --rule: #34312a;
+    --accent: #ff6a3d; --code-bg: #0a0a08; --code-ink: #efe9dc; --code-dim: #7a7466;
+    --good: #4cc38a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12110e; --paper-2: #1a1915; --card: #1d1b17;
+  --ink: #efe9dc; --ink-2: #c2bbab; --muted: #8f8877; --rule: #34312a;
+  --accent: #ff6a3d; --code-bg: #0a0a08; --code-ink: #efe9dc; --code-dim: #7a7466;
+  --good: #4cc38a; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; }
+::selection { background: var(--accent); color: var(--accent-ink); }
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 16px; }
+@media (min-width: 720px) { .wrap { padding: 0 32px; } }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
+.nav .wrap { display: flex; align-items: center; gap: 24px; height: 60px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 600; text-decoration: none; letter-spacing: -.01em; }
+.mark { width: 26px; height: 26px; border-radius: 5px; background: var(--accent); display: grid; place-items: center; }
+.nav-links { display: none; gap: 22px; margin-left: auto; font-size: 14px; color: var(--ink-2); }
+.nav-links a { text-decoration: none; }
+.nav-links a:hover { color: var(--ink); }
+@media (min-width: 820px) { .nav-links { display: flex; } }
+.nav-cta { margin-left: auto; display: flex; gap: 8px; }
+@media (min-width: 820px) { .nav-cta { margin-left: 0; } }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 14px;
+  border: 1px solid var(--ink); border-radius: 6px; background: transparent; color: var(--ink);
+  font: 500 14px var(--sans); text-decoration: none; cursor: pointer; white-space: nowrap;
+}
+.btn:hover { background: var(--ink); color: var(--paper); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { filter: brightness(1.05); background: var(--accent); color: var(--accent-ink); }
+.icon-btn { width: 38px; padding: 0; justify-content: center; }
+
+/* hero */
+.hero { padding: 56px 0 40px; border-bottom: 1px solid var(--rule); }
+@media (min-width: 960px) { .hero { padding: 88px 0 64px; } }
+.hero-grid { display: grid; gap: 40px; }
+.hero-grid > *, .panel > *, .sec-head > *, .steps > * { min-width: 0; }
+@media (min-width: 960px) { .hero-grid { grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; } }
+.eyebrow { font: 500 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 10px; }
+.eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+h1 {
+  font: 400 clamp(46px, 8.4vw, 96px)/.95 var(--serif); letter-spacing: -.02em; margin: 20px 0 22px;
+}
+h1 em { color: var(--accent); }
+.lede { font-size: 18px; color: var(--ink-2); max-width: 34em; margin: 0 0 28px; }
+.oneliner {
+  display: flex; align-items: stretch; max-width: 560px; border: 1px solid var(--ink); border-radius: 8px; overflow: hidden; background: var(--code-bg);
+}
+.oneliner code { flex: 1; min-width: 0; padding: 14px 16px; color: var(--code-ink); font: 14px/1.4 var(--mono); overflow-x: auto; white-space: nowrap; }
+.oneliner code::before { content: "$ "; color: var(--accent); }
+.oneliner button { border: 0; border-left: 1px solid #34312a; background: var(--accent); color: var(--accent-ink); font: 600 13px var(--sans); padding: 0 18px; cursor: pointer; }
+.hint { font-size: 13px; color: var(--muted); margin-top: 10px; }
+.hint a { color: var(--ink-2); }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 36px; border-top: 1px solid var(--rule); max-width: 560px; }
+.stats div { padding: 14px 0 0; }
+.stats b { display: block; font: 400 38px/1 var(--serif); }
+.stats span { font-size: 12px; color: var(--muted); }
+
+/* boardroom transcript */
+.room { background: var(--code-bg); color: var(--code-ink); border-radius: 12px; border: 1px solid #2a2823; overflow: hidden; box-shadow: 0 30px 60px -30px rgba(20,19,15,.5); }
+.room-head { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid #2a2823; font: 12px var(--mono); color: var(--code-dim); }
+.room-head i { width: 10px; height: 10px; border-radius: 50%; background: #3a3730; }
+.room-head i:first-child { background: var(--accent); }
+.room-head span { margin-left: auto; display: flex; align-items: center; gap: 6px; }
+.live { width: 7px; height: 7px; border-radius: 50%; background: #4cc38a; animation: pulse 1.6s infinite; }
+@keyframes pulse { 50% { opacity: .3; } }
+.room-body { padding: 18px 16px 20px; font: 13px/1.55 var(--mono); height: 380px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; gap: 12px; }
+.msg { opacity: 0; transform: translateY(6px); animation: in .35s forwards; }
+@keyframes in { to { opacity: 1; transform: none; } }
+.msg .who { color: var(--accent); }
+.msg .who.user { color: #8fb8ff; }
+.msg .who.sys { color: #4cc38a; }
+.msg p { margin: 2px 0 0; color: var(--code-ink); }
+.caret { display: inline-block; width: 7px; height: 14px; background: var(--code-ink); vertical-align: -2px; animation: pulse 1s steps(1) infinite; }
+
+/* sections */
+section { padding: 72px 0; border-bottom: 1px solid var(--rule); }
+.sec-head { display: grid; gap: 12px; margin-bottom: 36px; }
+@media (min-width: 960px) { .sec-head { grid-template-columns: 1fr 1fr; align-items: end; gap: 56px; } }
+.num { font: 500 12px var(--mono); color: var(--accent); letter-spacing: .1em; }
+h2 { font: 400 clamp(36px, 5.4vw, 60px)/1 var(--serif); letter-spacing: -.015em; margin: 8px 0 0; }
+.sec-head p { color: var(--ink-2); margin: 0; max-width: 32em; }
+
+/* install tabs */
+.tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  flex: none; border: 1px solid var(--rule); background: var(--card); color: var(--ink-2); border-radius: 999px;
+  padding: 8px 16px; font: 500 14px var(--sans); cursor: pointer;
+}
+.tab[aria-selected="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.panel { margin-top: 18px; display: grid; gap: 20px; }
+@media (min-width: 960px) { .panel { grid-template-columns: 1.4fr 1fr; gap: 32px; } }
+.panel[hidden] { display: none; }
+.steps { display: grid; gap: 14px; }
+.step-label { font: 500 12px var(--mono); color: var(--muted); margin-bottom: 6px; }
+.code {
+  position: relative; background: var(--code-bg); color: var(--code-ink); border-radius: 8px; border: 1px solid #2a2823;
+  font: 14px/1.6 var(--mono);
+}
+.code pre { margin: 0; padding: 16px 92px 16px 16px; overflow-x: auto; }
+.code .c { color: var(--code-dim); }
+.code .p { color: var(--accent); user-select: none; }
+.copy {
+  position: absolute; top: 10px; right: 10px; border: 1px solid #3a3730; background: #1f1d19; color: var(--code-ink);
+  border-radius: 5px; font: 500 12px var(--sans); padding: 5px 10px; cursor: pointer;
+}
+.copy:hover { border-color: var(--accent); }
+.copy.ok { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.aside { background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 20px; font-size: 15px; color: var(--ink-2); }
+.aside h3 { margin: 0 0 8px; font: 600 15px var(--sans); color: var(--ink); }
+.aside ul { margin: 0; padding-left: 18px; }
+.aside li { margin: 4px 0; }
+.aside code, p code, td code { font: 13px var(--mono); background: var(--paper-2); padding: 1px 5px; border-radius: 4px; color: var(--ink); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+td { padding: 8px 0; border-top: 1px solid var(--rule); vertical-align: top; }
+td:first-child { padding-right: 12px; color: var(--ink); font-weight: 500; white-space: nowrap; }
+
+/* how */
+.how { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+@media (min-width: 820px) { .how { grid-template-columns: repeat(4, 1fr); } }
+.how div { background: var(--card); padding: 24px 20px 28px; }
+.how b { font: 400 44px/1 var(--serif); color: var(--accent); }
+.how h3 { font: 600 16px var(--sans); margin: 14px 0 6px; }
+.how p { margin: 0; font-size: 14px; color: var(--ink-2); }
+
+/* commands */
+.cmds { display: grid; gap: 10px; }
+@media (min-width: 640px) { .cmds { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) { .cmds { grid-template-columns: repeat(3, 1fr); } }
+.cmd {
+  text-align: left; border: 1px solid var(--rule); background: var(--card); color: var(--ink); border-radius: 10px;
+  padding: 16px 18px; cursor: pointer; font: inherit; display: grid; gap: 4px; transition: transform .15s, border-color .15s;
+}
+.cmd:hover { border-color: var(--ink); transform: translateY(-2px); }
+.cmd code { font: 500 15px var(--mono); color: var(--accent); }
+.cmd span { font-size: 14px; color: var(--ink-2); }
+.cmd small { font: 11px var(--mono); color: var(--muted); margin-top: 6px; }
+.example { margin-top: 24px; }
+
+/* agents */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 20px; }
+.search {
+  flex: 1 1 240px; height: 40px; border: 1px solid var(--rule); background: var(--card); color: var(--ink); border-radius: 8px;
+  padding: 0 14px; font: 15px var(--sans); min-width: 0;
+}
+.search:focus { outline: 2px solid var(--accent); outline-offset: -1px; border-color: transparent; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { border: 1px solid var(--rule); background: transparent; color: var(--ink-2); border-radius: 999px; padding: 6px 12px; font: 500 13px var(--sans); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.chip em { font-style: normal; opacity: .6; margin-left: 4px; }
+.grid { display: grid; gap: 10px; }
+@media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+.agent {
+  border: 1px solid var(--rule); background: var(--card); border-radius: 10px; padding: 14px 16px; cursor: pointer;
+  display: grid; gap: 4px; text-align: left; font: inherit; color: var(--ink);
+}
+.agent:hover { border-color: var(--ink); }
+.agent .tag { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.agent .role { font-weight: 500; line-height: 1.35; }
+.agent code { font: 13px var(--mono); color: var(--accent); }
+.empty { color: var(--muted); padding: 24px 0; }
+
+/* punchline */
+.qa { display: grid; gap: 0; border-top: 1px solid var(--ink); }
+.qa div { display: grid; gap: 6px; padding: 28px 0; border-bottom: 1px solid var(--rule); }
+@media (min-width: 820px) { .qa div { grid-template-columns: 1fr 1fr; gap: 56px; align-items: baseline; } }
+.qa q { font: italic 400 clamp(26px, 3.6vw, 40px)/1.15 var(--serif); quotes: none; }
+.qa strong { font: 400 clamp(32px, 4.6vw, 56px)/1 var(--serif); }
+.qa strong.yes { color: var(--accent); }
+
+footer { padding: 40px 0 56px; color: var(--muted); font-size: 14px; }
+footer .wrap { display: grid; gap: 16px; }
+@media (min-width: 820px) { footer .wrap { grid-template-columns: 2fr 1fr; } }
+footer .links { display: flex; gap: 18px; flex-wrap: wrap; }
+@media (min-width: 820px) { footer .links { justify-content: flex-end; } }
+
+.toast {
+  position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+  background: var(--ink); color: var(--paper); padding: 10px 16px; border-radius: 8px; font: 500 14px var(--sans);
+  transition: .2s; z-index: 50; max-width: calc(100vw - 32px);
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .msg { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="mark"><svg width="16" height="16" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 26V6h5v20zm9 0V12h5v14zm9 0v-8h5v8z" fill="#14130f"/></svg></span>
+      Senior Consulting Agents
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#install">Install</a>
+      <a href="#how">How it works</a>
+      <a href="#commands">Commands</a>
+      <a href="#agents">Agents</a>
+    </nav>
+    <div class="nav-cta">
+      <button class="btn icon-btn" id="theme" aria-label="Toggle color theme" title="Toggle theme">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a class="btn" href="https://github.com/Lameda12/senior-consulting-agents" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>Open source AI skills · MIT</div>
+        <h1>Consulting, now with <em>more agents</em> arguing.</h1>
+        <p class="lede">One AI agent making things up wasn't enough. So here are 54 senior consulting agents that collaborate on the problems consultants have spent years turning into PowerPoint. Install them into the AI tool you already use, in one command.</p>
+        <div class="oneliner">
+          <code id="hero-cmd">npx skills add Lameda12/senior-consulting-agents</code>
+          <button data-copy-target="hero-cmd">Copy</button>
+        </div>
+        <p class="hint">Works with Claude Code, Codex, Gemini CLI, Cursor, OpenCode, Cline, Copilot and more. <a href="#install">Other install options</a></p>
+        <div class="stats">
+          <div><b>54</b><span>senior agents</span></div>
+          <div><b>11</b><span>commands</span></div>
+          <div><b>2</b><span>skills</span></div>
+          <div><b>0</b><span>meetings</span></div>
+        </div>
+      </div>
+      <div class="room" aria-label="Example of agents discussing a request">
+        <div class="room-head"><i></i><i></i><i></i>&nbsp; /engage · steering-committee.log <span><b class="live"></b>live</span></div>
+        <div class="room-body" id="room" aria-live="off"></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="install">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="num">01 / INSTALL</div><h2>Pick your tool. Paste one line.</h2></div>
+        <p>No account, no API key, no signup form. The skills are plain Markdown files your agent reads when a request needs them.</p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Install target">
+        <button class="tab" role="tab" aria-selected="true" aria-controls="p-any" id="t-any">Any agent</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p-claude" id="t-claude">Claude Code plugin</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p-gemini" id="t-gemini">Gemini CLI</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p-manual" id="t-manual">Manual copy</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p-chat" id="t-chat">Any chat / API</button>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-any" aria-labelledby="t-any">
+        <div class="steps">
+          <div>
+            <div class="step-label">Run in your terminal</div>
+            <div class="code"><pre><span class="p">$ </span>npx skills add Lameda12/senior-consulting-agents</pre><button class="copy">Copy</button></div>
+          </div>
+          <div>
+            <div class="step-label">Then just ask your agent</div>
+            <div class="code"><pre><span class="c"># the router skill picks the right 1-3 personas</span>
+Draft an audit planning memo for a Canadian SaaS company with $40M ARR</pre><button class="copy">Copy</button></div>
+          </div>
+        </div>
+        <div class="aside">
+          <h3>Works with anything that supports Agent Skills</h3>
+          <ul>
+            <li>Codex CLI, Gemini CLI, OpenCode</li>
+            <li>Cursor, Cline, GitHub Copilot</li>
+            <li>Claude Code (skills only; use the plugin tab for subagents and commands)</li>
+          </ul>
+          <p style="margin:12px 0 0">Needs Node.js 18+ for <code>npx</code>.</p>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-claude" aria-labelledby="t-claude" hidden>
+        <div class="steps">
+          <div>
+            <div class="step-label">1 · Inside Claude Code, add the marketplace</div>
+            <div class="code"><pre><span class="p">&gt; </span>/plugin marketplace add Lameda12/senior-consulting-agents</pre><button class="copy">Copy</button></div>
+          </div>
+          <div>
+            <div class="step-label">2 · Install the plugin</div>
+            <div class="code"><pre><span class="p">&gt; </span>/plugin install senior-consulting-agents@senior-consulting-agents</pre><button class="copy">Copy</button></div>
+          </div>
+          <div>
+            <div class="step-label">3 · Run an engagement</div>
+            <div class="code"><pre><span class="p">&gt; </span>/engage Canadian SaaS company (ARR $40M) preparing for US IPO: revenue recognition, SOX readiness and Pillar Two exposure</pre><button class="copy">Copy</button></div>
+          </div>
+        </div>
+        <div class="aside">
+          <h3>The full experience</h3>
+          <ul>
+            <li>54 real subagents that can work in parallel</li>
+            <li>11 slash commands like <code>/engage</code> and <code>/review</code></li>
+            <li>2 skills: the router and the house style</li>
+          </ul>
+          <p style="margin:12px 0 0">Working from a clone? <code>claude --plugin-dir ./senior-consulting-agents</code></p>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-gemini" aria-labelledby="t-gemini" hidden>
+        <div class="steps">
+          <div>
+            <div class="step-label">Install as a Gemini CLI extension</div>
+            <div class="code"><pre><span class="p">$ </span>gemini extensions install https://github.com/Lameda12/senior-consulting-agents</pre><button class="copy">Copy</button></div>
+          </div>
+          <div>
+            <div class="step-label">Then ask</div>
+            <div class="code"><pre>Run a cyber maturity assessment for a mid-size credit union</pre><button class="copy">Copy</button></div>
+          </div>
+        </div>
+        <div class="aside">
+          <h3>What you get</h3>
+          <p style="margin:0">The extension ships the skills plus a <code>GEMINI.md</code> context file, so Gemini knows which persona to load for each request.</p>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-manual" aria-labelledby="t-manual" hidden>
+        <div class="steps">
+          <div>
+            <div class="step-label">Clone and copy the two skill folders</div>
+            <div class="code"><pre><span class="p">$ </span>git clone https://github.com/Lameda12/senior-consulting-agents
+<span class="p">$ </span>cp -r senior-consulting-agents/skills/* ~/.claude/skills/</pre><button class="copy">Copy</button></div>
+          </div>
+        </div>
+        <div class="aside">
+          <h3>Skills directory per tool</h3>
+          <table>
+            <tr><td>Claude Code</td><td><code>~/.claude/skills/</code></td></tr>
+            <tr><td>Codex CLI</td><td><code>~/.codex/skills/</code> or <code>.agents/skills/</code></td></tr>
+            <tr><td>Gemini CLI</td><td><code>~/.gemini/skills/</code></td></tr>
+            <tr><td>OpenCode</td><td><code>~/.config/opencode/skills/</code></td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-chat" aria-labelledby="t-chat" hidden>
+        <div class="steps">
+          <div>
+            <div class="step-label">Grab any persona as a system prompt</div>
+            <div class="code"><pre><span class="p">$ </span>curl -sL https://raw.githubusercontent.com/Lameda12/senior-consulting-agents/main/skills/senior-consulting-agents/references/agents/strategy-director.md</pre><button class="copy">Copy</button></div>
+          </div>
+          <div>
+            <div class="step-label">Optional: append the house style</div>
+            <div class="code"><pre><span class="p">$ </span>curl -sL https://raw.githubusercontent.com/Lameda12/senior-consulting-agents/main/skills/senior-consulting-agents/references/deliverable-standards.md</pre><button class="copy">Copy</button></div>
+          </div>
+        </div>
+        <div class="aside">
+          <h3>For models without a skills system</h3>
+          <p style="margin:0">DeepSeek, Llama, Nemotron, local models in Ollama or LM Studio, or any chat UI. Paste the persona file as the system prompt. Swap <code>strategy-director</code> for any id in the <a href="#agents">agent list</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="num">02 / HOW IT WORKS</div><h2>Structured problem-solving, minus the billable hours.</h2></div>
+        <p>A router skill indexes every persona and workflow, then loads only the 1-3 files a request actually needs. Your context window stays small. The arguing stays efficient.</p>
+      </div>
+      <div class="how">
+        <div><b>1</b><h3>Route</h3><p>Your request is matched to a workflow: audit plan, tax memo, due diligence, valuation and more.</p></div>
+        <div><b>2</b><h3>Staff</h3><p>The best 1-3 senior personas are pulled in by practice, jurisdiction and topic.</p></div>
+        <div><b>3</b><h3>Argue</h3><p>Each persona applies its own frameworks. Subagent-capable tools run them in parallel.</p></div>
+        <div><b>4</b><h3>Deliver</h3><p>One consolidated, partner-reviewed-style deliverable in a consistent house style.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="commands">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="num">03 / COMMANDS</div><h2>Eleven engagements, one slash away.</h2></div>
+        <p>Slash commands in the Claude Code plugin. In every other tool, just describe the task in plain words. Click any card to copy it.</p>
+      </div>
+      <div class="cmds" id="cmds"></div>
+    </div>
+  </section>
+
+  <section id="agents">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="num">04 / THE BENCH</div><h2>54 seniors. Zero juniors to blame.</h2></div>
+        <p>Managers, Senior Managers, Directors and Partners across every major practice. Click an agent to copy its id.</p>
+      </div>
+      <div class="filters">
+        <input class="search" id="q" type="search" placeholder="Search agents: tax, cyber, IFRS, M&amp;A..." aria-label="Search agents">
+        <div class="chips" id="chips"></div>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="qa">
+        <div><q>Will this replace consultants?</q><strong>Probably not anytime soon.</strong></div>
+        <div><q>Will it give me another excuse to say I'm working on AI?</q><strong class="yes">Absolutely.</strong></div>
+      </div>
+      <div style="margin-top:40px; display:flex; gap:10px; flex-wrap:wrap">
+        <a class="btn primary" href="#install">Install the agents</a>
+        <a class="btn" href="https://github.com/Lameda12/senior-consulting-agents" target="_blank" rel="noopener">Star on GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0">Unofficial. Not affiliated with, endorsed by, or representing any professional-services firm. Outputs are AI drafts and must be reviewed by qualified professionals. Built by Alamedin Sabit.</p>
+    <div class="links">
+      <a href="https://github.com/Lameda12/senior-consulting-agents" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/Lameda12/senior-consulting-agents/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contribute</a>
+      <a href="https://github.com/Lameda12/senior-consulting-agents/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  // theme
+  const root = document.documentElement;
+  try { const t = localStorage.getItem("sca-theme"); if (t) root.dataset.theme = t; } catch {}
+  document.getElementById("theme").addEventListener("click", () => {
+    const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    root.dataset.theme = dark ? "light" : "dark";
+    try { localStorage.setItem("sca-theme", root.dataset.theme); } catch {}
+  });
+
+  // copy
+  const toast = document.getElementById("toast");
+  let toastTimer;
+  const notify = msg => {
+    toast.textContent = msg; toast.classList.add("show");
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove("show"), 1600);
+  };
+  const copy = async (text, label = "Copied to clipboard") => {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      const ta = Object.assign(document.createElement("textarea"), { value: text });
+      ta.style.cssText = "position:fixed;opacity:0";
+      document.body.append(ta); ta.select();
+      try { document.execCommand("copy"); } catch { notify("Copy failed, select the text manually"); ta.remove(); return false; }
+      ta.remove();
+    }
+    notify(label);
+    return true;
+  };
+  const flash = btn => {
+    const old = btn.textContent; btn.textContent = "Copied"; btn.classList.add("ok");
+    setTimeout(() => { btn.textContent = old; btn.classList.remove("ok"); }, 1400);
+  };
+  // strip prompts and comments so pasted text runs as-is
+  const codeText = pre => [...pre.childNodes]
+    .filter(n => !(n.classList && (n.classList.contains("p") || n.classList.contains("c"))))
+    .map(n => n.textContent).join("").split("\n").map(l => l.trimEnd()).filter(Boolean).join("\n");
+
+  document.querySelectorAll(".code .copy").forEach(btn =>
+    btn.addEventListener("click", async () => { if (await copy(codeText(btn.previousElementSibling))) flash(btn); }));
+  document.querySelectorAll("[data-copy-target]").forEach(btn =>
+    btn.addEventListener("click", async () => { if (await copy(document.getElementById(btn.dataset.copyTarget).textContent)) flash(btn); }));
+
+  // tabs
+  const tabs = [...document.querySelectorAll(".tab")];
+  const select = tab => tabs.forEach(t => {
+    const on = t === tab;
+    t.setAttribute("aria-selected", on);
+    t.tabIndex = on ? 0 : -1;
+    document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+  });
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => select(t));
+    t.addEventListener("keydown", e => {
+      const d = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+      if (!d) return;
+      const next = tabs[(i + d + tabs.length) % tabs.length];
+      select(next); next.focus();
+    });
+  });
+  select(tabs[0]);
+
+  // commands
+  const commands = [
+    ["engage", "Route a request to the best specialist agent(s) and run an engagement", "Canadian SaaS company (ARR $40M) preparing for US IPO"],
+    ["audit-plan", "Draft an audit planning memo", "FY26 audit of a mid-market manufacturer"],
+    ["tax-memo", "Draft a tax technical memo", "Pillar Two exposure for a Canadian group with an Irish sub"],
+    ["due-diligence", "Financial, tax and commercial due diligence outline", "buy-side DD on a $120M B2B SaaS target"],
+    ["valuation", "Valuation approach and model outline", "pre-Series C fintech, 409A and fair value"],
+    ["risk-assessment", "Risk and controls assessment", "procure-to-pay at a regional retailer"],
+    ["cyber-review", "Cyber maturity assessment", "NIST CSF 2.0 baseline for a credit union"],
+    ["proposal", "Write a winning proposal", "finance transformation RFP for a provincial agency"],
+    ["review", "Partner-level review of a document", "paste your draft memo here"],
+    ["esg", "ESG and sustainability readiness assessment", "ISSB / CSRD readiness for a mining company"],
+    ["interview-prep", "Big Four interview and career prep", "Senior Consultant, Risk Advisory, Toronto"],
+  ];
+  document.getElementById("cmds").innerHTML = commands.map(([c, d, ex]) =>
+    `<button class="cmd" data-cmd="/${c} ${ex}"><code>/${c}</code><span>${d}</span><small>e.g. ${ex}</small></button>`).join("");
+  document.querySelectorAll(".cmd").forEach(b => b.addEventListener("click", () => copy(b.dataset.cmd, `Copied /${b.dataset.cmd.split(" ")[0].slice(1)}`)));
+
+  // agents: [id, role, group]
+  const agents = [
+    ["audit-partner","Audit Engagement Partner","Audit"],
+    ["audit-senior-manager","Audit Senior Manager (External Audit)","Audit"],
+    ["financial-reporting-ifrs","IFRS Technical Accounting Director","Audit"],
+    ["us-gaap-sec-reporting","US GAAP & SEC Reporting Senior Manager","Audit"],
+    ["sox-icfr","SOX / ICFR Controls Director","Audit"],
+    ["it-audit-itgc","IT Audit / ITGC Senior Manager","Audit"],
+    ["forensic-data-analytics-audit","Audit Data & Analytics Lead","Audit"],
+    ["public-sector-audit","Government & Public Sector Audit Senior Manager","Audit"],
+    ["corporate-tax-partner","Corporate Tax Partner","Tax"],
+    ["international-tax","International Tax Senior Manager","Tax"],
+    ["transfer-pricing","Transfer Pricing Director","Tax"],
+    ["indirect-tax","Indirect Tax (VAT/GST/Sales Tax) Senior Manager","Tax"],
+    ["mergers-acquisitions-tax","M&A Tax Director","Tax"],
+    ["global-mobility-tax","Global Mobility Services Senior Manager","Tax"],
+    ["private-enterprise-tax","Private Enterprise & Family Office Tax Senior Manager","Tax"],
+    ["tax-technology","Tax Technology & Transformation Director","Tax"],
+    ["tax-controversy","Tax Controversy & Dispute Resolution Senior Manager","Tax"],
+    ["management-consulting-partner","Management Consulting Partner","Advisory"],
+    ["strategy-director","Strategy Director","Advisory"],
+    ["finance-transformation","Finance Transformation Senior Manager","Advisory"],
+    ["operations-supply-chain","Operations & Supply Chain Director","Advisory"],
+    ["people-change","People & Change Senior Manager","Advisory"],
+    ["customer-advisory","Customer & Digital Experience Director","Advisory"],
+    ["technology-consulting-architect","Technology Consulting Director / Enterprise Architect","Advisory"],
+    ["ai-data-analytics","AI & Data Analytics Director","Advisory"],
+    ["cyber-security","Cyber Security Director","Advisory"],
+    ["privacy-data-protection","Privacy & Data Protection Senior Manager","Advisory"],
+    ["internal-audit","Internal Audit Director (Outsourced/Co-sourced)","Risk"],
+    ["enterprise-risk","Enterprise Risk Management Senior Manager","Risk"],
+    ["regulatory-compliance-fs","Financial Services Regulatory Director","Risk"],
+    ["financial-risk-quant","Financial Risk & Quantitative Modeling Senior Manager","Risk"],
+    ["forensic-investigations","Forensic Investigations Director","Forensic"],
+    ["anti-financial-crime","Anti-Money Laundering & Sanctions Senior Manager","Forensic"],
+    ["dispute-expert-witness","Disputes & Expert Witness Director","Forensic"],
+    ["deal-advisory-partner","Deal Advisory (M&A) Partner","Deals"],
+    ["financial-due-diligence","Financial Due Diligence (Transaction Services) Director","Deals"],
+    ["valuations","Valuations Senior Manager","Deals"],
+    ["corporate-finance-modeling","Corporate Finance & Financial Modeling Director","Deals"],
+    ["restructuring","Restructuring & Turnaround Director","Deals"],
+    ["integration-separation","M&A Integration & Separation Senior Manager","Deals"],
+    ["infrastructure-advisory","Infrastructure & Project Finance Director","Deals"],
+    ["esg-assurance","ESG & Sustainability Assurance Director","ESG"],
+    ["esg-advisory","ESG Strategy & Decarbonisation Director","ESG"],
+    ["sector-financial-services","Financial Services Industry Leader","Sector"],
+    ["sector-energy-resources","Energy, Natural Resources & Chemicals Industry Leader","Sector"],
+    ["sector-healthcare-life-sciences","Healthcare & Life Sciences Industry Leader","Sector"],
+    ["sector-tmt","Technology, Media & Telecom Industry Leader","Sector"],
+    ["sector-government","Government & Public Sector Advisory Director","Sector"],
+    ["sector-consumer-retail","Consumer & Retail Industry Leader","Sector"],
+    ["sector-industrial-manufacturing","Industrial Manufacturing & Automotive Industry Leader","Sector"],
+    ["quality-risk-management","Risk Management & Professional Practice Partner","Firm"],
+    ["proposal-business-development","Pursuits & Business Development Director","Firm"],
+    ["engagement-project-manager","Engagement & PMO Director","Firm"],
+    ["learning-career-coach","Talent, Learning & Career Coach","Firm"],
+  ];
+  const groups = ["All", ...new Set(agents.map(a => a[2]))];
+  let group = "All", query = "";
+  const chips = document.getElementById("chips");
+  chips.innerHTML = groups.map(g => {
+    const n = g === "All" ? agents.length : agents.filter(a => a[2] === g).length;
+    return `<button class="chip" aria-pressed="${g === "All"}" data-g="${g}">${g}<em>${n}</em></button>`;
+  }).join("");
+  const grid = document.getElementById("grid");
+  const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const render = () => {
+    const q = query.trim().toLowerCase();
+    const list = agents.filter(([id, role, g]) =>
+      (group === "All" || g === group) && (!q || `${id} ${role} ${g}`.toLowerCase().includes(q)));
+    grid.innerHTML = list.length
+      ? list.map(([id, role, g]) => `<button class="agent" data-id="${id}"><span class="tag">${g}</span><span class="role">${esc(role)}</span><code>${id}</code></button>`).join("")
+      : `<p class="empty">No agent for that yet. <a href="https://github.com/Lameda12/senior-consulting-agents/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contribute one?</a></p>`;
+  };
+  chips.addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    group = b.dataset.g;
+    chips.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b));
+    render();
+  });
+  document.getElementById("q").addEventListener("input", e => { query = e.target.value; render(); });
+  grid.addEventListener("click", e => { const b = e.target.closest(".agent"); if (b) copy(b.dataset.id, `Copied ${b.dataset.id}`); });
+  render();
+
+  // boardroom transcript
+  const script = [
+    ["you", "user", "/engage Canadian SaaS, $40M ARR, prepping a US IPO. Where do we start?"],
+    ["router", "sys", "Staffing: audit-partner, sox-icfr, international-tax"],
+    ["audit-partner", "", "Before anyone says anything clever: is this an audit client? Independence check first."],
+    ["sox-icfr", "", "Year one as an SEC filer. Your ITGCs are a spreadsheet named FINAL_v7. We need to talk."],
+    ["international-tax", "", "Pillar Two would like a word. Several words, actually."],
+    ["strategy-director", "", "Can we at least agree on the problem statement?"],
+    ["management-consulting-partner", "", "Let's put it in a 2x2."],
+    ["quality-risk-management", "", "Nobody is signing anything until a human reviews this."],
+    ["engagement-project-manager", "", "We are 40 minutes over. Consolidating into one deliverable."],
+    ["router", "sys", "Deliverable ready: IPO readiness memo, 3 workstreams, 14 actions."],
+  ];
+  const room = document.getElementById("room");
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const line = ([who, cls, text]) => {
+    const el = document.createElement("div");
+    el.className = "msg";
+    el.innerHTML = `<span class="who ${cls}">${who}</span><p></p>`;
+    room.append(el);
+    while (room.children.length > 7) room.firstElementChild.remove();
+    return el.querySelector("p");
+  };
+  if (reduced) {
+    script.slice(-7).forEach(m => { line(m).textContent = m[2]; });
+  } else {
+    let i = 0;
+    const next = () => {
+      if (i === script.length) { i = 0; room.innerHTML = ""; }
+      const m = script[i++], p = line(m);
+      let c = 0;
+      const caret = document.createElement("span"); caret.className = "caret";
+      const type = () => {
+        p.textContent = m[2].slice(0, ++c); p.append(caret);
+        if (c < m[2].length) setTimeout(type, 14 + Math.random() * 22);
+        else { caret.remove(); setTimeout(next, i === script.length ? 3200 : 700); }
+      };
+      type();
+    };
+    setTimeout(next, 400);
+  }
+})();
+</script>
+</body>
+</html>
