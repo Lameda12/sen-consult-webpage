@@ -109,7 +109,7 @@ img, svg, canvas { display: block; max-width: 100%; }
 @media (min-width: 980px) { .hero-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 24px; } }
 .eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 12px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--ivory-2); padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(242, 236, 220, .02); }
 .eyebrow i { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 12px var(--lime); }
-h1 { font: 400 clamp(46px, 6.2vw, 88px)/.94 var(--display); letter-spacing: -.025em; margin: 22px 0 22px; text-wrap: balance; }
+h1 { font: 400 clamp(46px, 6.2vw, 88px)/.94 var(--display); letter-spacing: -.025em; margin: 18px 0 22px; text-wrap: balance; }
 h1 em { font-style: italic; color: var(--lime); padding-right: .04em; }
 .lede { font-size: clamp(17px, 1.6vw, 19px); color: var(--ivory-2); max-width: 33em; margin: 0 0 30px; }
 .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -140,7 +140,11 @@ h1 em { font-style: italic; color: var(--lime); padding-right: .04em; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .pulse { animation: pulse 3.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
 @keyframes pulse { 50% { opacity: .45; } }
-.mascot { inset: auto; left: 40%; bottom: 2%; width: 44%; filter: drop-shadow(0 24px 40px rgba(0, 0, 0, .55)) drop-shadow(0 0 28px rgba(198, 255, 61, .14)); }
+.brand-row { display: flex; align-items: flex-end; gap: 14px; }
+.mascot-top { flex: none; width: clamp(84px, 9vw, 120px); animation: bob 9s ease-in-out infinite; filter: drop-shadow(0 14px 22px rgba(0, 0, 0, .55)) drop-shadow(0 0 22px rgba(198, 255, 61, .12)); }
+.mascot-top img { width: 100%; height: auto; }
+.brand-row .eyebrow { margin-bottom: 10px; white-space: nowrap; }
+@media (max-width: 480px) { .brand-row .eyebrow { font-size: 10.5px; letter-spacing: .08em; padding: 7px 10px; } }
 .mascot img { width: 100%; height: auto; }
 .chipf { position: absolute; display: inline-flex; align-items: center; gap: 8px; padding: 7px 11px; font: 12px/1 var(--mono); color: var(--ivory); background: rgba(9, 13, 18, .78); border: 1px solid var(--line-2); border-radius: 9px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); white-space: nowrap; }
 .chipf i { width: 6px; height: 6px; border-radius: 2px; background: var(--cyan); }
@@ -397,7 +401,15 @@ footer a:hover { color: var(--lime); border-color: var(--lime); }
   <div class="hero" id="top">
     <div class="wrap hero-grid">
       <div>
-        <div class="eyebrow rv"><i></i>Open source · MIT licensed</div>
+        <div class="brand-row rv">
+          <div class="mascot-top">
+            <picture>
+              <source srcset="assets/firmcraft-mascot.webp" type="image/webp">
+              <img src="assets/firmcraft-mascot.png" width="860" height="852" alt="Firmcraft's beaver mascot in a navy vest, holding a teal evidence checklist." fetchpriority="high">
+            </picture>
+          </div>
+          <div class="eyebrow"><i></i>Open source · MIT licensed</div>
+        </div>
         <h1 class="rv" style="--i:1">Turn business evidence into <em>reviewable</em> work.</h1>
         <p class="lede rv" style="--i:2">Firmcraft gives the assistant you already use 13 B2B workflows and 54 specialist personas for management reports, supplier-risk reviews and proposals. Each draft keeps its sources, gaps and open decisions in view.</p>
         <div class="cta-row rv" style="--i:3">
@@ -418,7 +430,7 @@ footer a:hover { color: var(--lime); border-color: var(--lime); }
         </ul>
       </div>
 
-      <div class="hero-art rv" style="--i:2" id="hero-art" role="img" aria-label="Illustration: evidence files flow into a glowing intelligence core and leave as report sheets, with Firmcraft's beaver mascot in front.">
+      <div class="hero-art rv" style="--i:2" id="hero-art" role="img" aria-label="Illustration: evidence files flow into a glowing intelligence core and leave as report sheets,.">
         <canvas class="flow" id="flow" aria-hidden="true"></canvas>
         <div class="layer" data-depth="10"><div class="bob b2"><svg class="core-svg" viewBox="0 0 600 600" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -496,14 +508,6 @@ footer a:hover { color: var(--lime); border-color: var(--lime); }
           <span class="chipf out o1"><i></i>variance-table</span>
           <span class="chipf out o2"><i></i>risk-register</span>
           <span class="chipf out o3"><i></i>requirement-matrix</span>
-        </div>
-        <div class="layer" data-depth="34">
-          <div class="bob b3 mascot">
-            <picture>
-              <source srcset="assets/firmcraft-mascot.webp" type="image/webp">
-              <img src="assets/firmcraft-mascot.png" width="860" height="852" alt="Firmcraft's beaver mascot in a navy vest, holding a teal evidence checklist." fetchpriority="high">
-            </picture>
-          </div>
         </div>
         <p class="art-note">Illustrative file names</p>
       </div>
