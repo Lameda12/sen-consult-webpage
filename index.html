@@ -3,462 +3,1019 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Senior Consulting Agents</title>
-<meta name="description" content="54 senior consulting agents, 11 commands and 2 skills you can install into Claude Code, Codex, Gemini CLI, Cursor and any agent that supports Agent Skills. Fewer meetings, more agents arguing.">
-<meta property="og:title" content="Senior Consulting Agents">
-<meta property="og:description" content="Because one AI agent making things up wasn't enough. 54 senior personas, one install command.">
+<title>Firmcraft: AI workflows for B2B decisions and deliverables</title>
+<meta name="description" content="Firmcraft gives your AI assistant 13 B2B workflows and 54 specialist personas for management reports, supplier-risk reviews and proposals. Open source, MIT, drafts for qualified review.">
+<meta name="theme-color" content="#05070a">
+<meta property="og:site_name" content="Firmcraft">
+<meta property="og:title" content="Firmcraft: turn business evidence into reviewable work">
+<meta property="og:description" content="13 B2B workflows and 54 specialist personas for management reports, supplier-risk reviews and proposals. Install into Claude Code, Codex, Gemini CLI and other assistants.">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23ff4f1f'/%3E%3Cpath d='M9 22V10h3v12zm5.5 0V14h3v8zm5.5 0v-5h3v5z' fill='%2314130f'/%3E%3C/svg%3E">
+<meta property="og:image" content="assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Firmcraft: a beaver mascot beside a glowing core with evidence files flowing in and report sheets flowing out.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Firmcraft: turn business evidence into reviewable work">
+<meta name="twitter:description" content="13 B2B workflows and 54 specialist personas for your AI assistant. Open source, MIT.">
+<meta name="twitter:image" content="assets/og.png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js")</script>
 <style>
 :root {
-  --paper: #f3efe6;
-  --paper-2: #ebe5d8;
-  --card: #fbf9f4;
-  --ink: #14130f;
-  --ink-2: #4a463d;
-  --muted: #7a7466;
-  --rule: #d6cfbf;
-  --accent: #ff4f1f;
-  --accent-ink: #14130f;
-  --code-bg: #14130f;
-  --code-ink: #efe9dc;
-  --code-dim: #8f8877;
-  --good: #1f7a4d;
-  --serif: "Instrument Serif", Georgia, serif;
-  --sans: "IBM Plex Sans", system-ui, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, monospace;
-  color-scheme: light;
+  --bg: #05070a;
+  --bg-2: #090d12;
+  --panel: #0c1218;
+  --panel-2: #101820;
+  --ivory: #f2ecdc;
+  --ivory-2: #c9c4b4;
+  --muted: #8f9a98;
+  --line: rgba(242, 236, 220, .11);
+  --line-2: rgba(242, 236, 220, .2);
+  --lime: #c6ff3d;
+  --lime-dim: #9fd12c;
+  --cyan: #6fd3d0;
+  --ink: #05070a;
+  --display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --ease: cubic-bezier(.2, .7, .1, 1);
+  color-scheme: dark;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #12110e; --paper-2: #1a1915; --card: #1d1b17;
-    --ink: #efe9dc; --ink-2: #c2bbab; --muted: #8f8877; --rule: #34312a;
-    --accent: #ff6a3d; --code-bg: #0a0a08; --code-ink: #efe9dc; --code-dim: #7a7466;
-    --good: #4cc38a; color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #12110e; --paper-2: #1a1915; --card: #1d1b17;
-  --ink: #efe9dc; --ink-2: #c2bbab; --muted: #8f8877; --rule: #34312a;
-  --accent: #ff6a3d; --code-bg: #0a0a08; --code-ink: #efe9dc; --code-dim: #7a7466;
-  --good: #4cc38a; color-scheme: dark;
-}
-
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; -webkit-text-size-adjust: 100%; }
 body {
-  margin: 0; background: var(--paper); color: var(--ink);
-  font: 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  margin: 0; background: var(--bg); color: var(--ivory);
+  font: 400 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+body::before { /* atmosphere */
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(900px 600px at 82% -8%, rgba(198, 255, 61, .07), transparent 60%),
+    radial-gradient(800px 600px at -10% 30%, rgba(111, 211, 208, .06), transparent 60%);
 }
 a { color: inherit; }
-::selection { background: var(--accent); color: var(--accent-ink); }
-.wrap { max-width: 1160px; margin: 0 auto; padding: 0 16px; }
-@media (min-width: 720px) { .wrap { padding: 0 32px; } }
+img, svg, canvas { display: block; max-width: 100%; }
+::selection { background: var(--lime); color: var(--ink); }
+:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; border-radius: 4px; }
+.wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+@media (min-width: 720px) { .wrap { padding: 0 36px; } }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: 12px; top: -60px; z-index: 100; background: var(--lime); color: var(--ink); padding: 10px 16px; border-radius: 8px; font-weight: 600; text-decoration: none; }
+.skip:focus { top: 12px; }
 
 /* nav */
-.nav { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
-.nav .wrap { display: flex; align-items: center; gap: 24px; height: 60px; }
-.brand { display: flex; align-items: center; gap: 10px; font-weight: 600; text-decoration: none; letter-spacing: -.01em; }
-.mark { width: 26px; height: 26px; border-radius: 5px; background: var(--accent); display: grid; place-items: center; }
-.nav-links { display: none; gap: 22px; margin-left: auto; font-size: 14px; color: var(--ink-2); }
-.nav-links a { text-decoration: none; }
-.nav-links a:hover { color: var(--ink); }
-@media (min-width: 820px) { .nav-links { display: flex; } }
-.nav-cta { margin-left: auto; display: flex; gap: 8px; }
-@media (min-width: 820px) { .nav-cta { margin-left: 0; } }
+.nav { position: sticky; top: 0; z-index: 40; background: rgba(5, 7, 10, .72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; align-items: center; gap: 20px; height: 62px; }
+.brand { display: flex; align-items: center; gap: 10px; font: 600 17px/1 var(--sans); letter-spacing: -.01em; text-decoration: none; }
+.brand .mk { width: 28px; height: 28px; border-radius: 8px; background: var(--lime); display: grid; place-items: center; transition: transform .4s var(--ease); }
+.brand:hover .mk { transform: rotate(-8deg) scale(1.06); }
+.nav-links { display: none; gap: 4px; margin-left: auto; }
+.nav-links a { position: relative; padding: 8px 12px; font-size: 14px; color: var(--ivory-2); text-decoration: none; border-radius: 8px; transition: color .2s; }
+.nav-links a::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 3px; height: 1px; background: var(--lime); transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease); }
+.nav-links a:hover, .nav-links a[aria-current="true"] { color: var(--ivory); }
+.nav-links a:hover::after, .nav-links a[aria-current="true"]::after { transform: scaleX(1); }
+.nav-right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+@media (min-width: 900px) { .nav-links { display: flex; } .nav-right { margin-left: 8px; } .nav .menu-btn { display: none; } }
+.menu-btn { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid var(--line-2); background: transparent; color: var(--ivory); border-radius: 10px; cursor: pointer; }
+.mobile-nav { display: none; border-top: 1px solid var(--line); background: rgba(5, 7, 10, .96); }
+.mobile-nav.open { display: block; }
+.mobile-nav a { display: block; padding: 14px 20px; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ivory-2); }
+.mobile-nav a:hover { color: var(--lime); }
+@media (min-width: 900px) { .mobile-nav { display: none !important; } }
+
+/* buttons */
 .btn {
-  display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 14px;
-  border: 1px solid var(--ink); border-radius: 6px; background: transparent; color: var(--ink);
-  font: 500 14px var(--sans); text-decoration: none; cursor: pointer; white-space: nowrap;
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 44px; padding: 0 20px;
+  border: 1px solid var(--line-2); border-radius: 12px; background: rgba(242, 236, 220, .03); color: var(--ivory);
+  font: 500 15px/1 var(--sans); text-decoration: none; cursor: pointer; white-space: nowrap;
+  transition: transform .3s var(--ease), background .25s, border-color .25s, box-shadow .3s;
 }
-.btn:hover { background: var(--ink); color: var(--paper); }
-.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-.btn.primary:hover { filter: brightness(1.05); background: var(--accent); color: var(--accent-ink); }
-.icon-btn { width: 38px; padding: 0; justify-content: center; }
+.btn:hover { transform: translateY(-2px); border-color: rgba(198, 255, 61, .55); background: rgba(198, 255, 61, .06); }
+.btn:active { transform: translateY(0) scale(.98); }
+.btn svg { transition: transform .3s var(--ease); }
+.btn:hover svg.arr { transform: translateX(3px); }
+.btn.primary { background: var(--lime); border-color: var(--lime); color: var(--ink); font-weight: 600; box-shadow: 0 0 0 0 rgba(198, 255, 61, 0); }
+.btn.primary:hover { background: #d6ff6b; box-shadow: 0 10px 40px -8px rgba(198, 255, 61, .45); }
+.btn.sm { min-height: 38px; padding: 0 14px; font-size: 14px; border-radius: 10px; }
 
 /* hero */
-.hero { padding: 56px 0 40px; border-bottom: 1px solid var(--rule); }
-@media (min-width: 960px) { .hero { padding: 88px 0 64px; } }
-.hero-grid { display: grid; gap: 40px; }
-.hero-grid > *, .panel > *, .sec-head > *, .steps > * { min-width: 0; }
-@media (min-width: 960px) { .hero-grid { grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; } }
-.eyebrow { font: 500 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 10px; }
-.eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
-h1 {
-  font: 400 clamp(46px, 8.4vw, 96px)/.95 var(--serif); letter-spacing: -.02em; margin: 20px 0 22px;
-}
-h1 em { color: var(--accent); }
-.lede { font-size: 18px; color: var(--ink-2); max-width: 34em; margin: 0 0 28px; }
-.oneliner {
-  display: flex; align-items: stretch; max-width: 560px; border: 1px solid var(--ink); border-radius: 8px; overflow: hidden; background: var(--code-bg);
-}
-.oneliner code { flex: 1; min-width: 0; padding: 14px 16px; color: var(--code-ink); font: 14px/1.4 var(--mono); overflow-x: auto; white-space: nowrap; }
-.oneliner code::before { content: "$ "; color: var(--accent); }
-.oneliner button { border: 0; border-left: 1px solid #34312a; background: var(--accent); color: var(--accent-ink); font: 600 13px var(--sans); padding: 0 18px; cursor: pointer; }
-.hint { font-size: 13px; color: var(--muted); margin-top: 10px; }
-.hint a { color: var(--ink-2); }
-.stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 36px; border-top: 1px solid var(--rule); max-width: 560px; }
-.stats div { padding: 14px 0 0; }
-.stats b { display: block; font: 400 38px/1 var(--serif); }
-.stats span { font-size: 12px; color: var(--muted); }
+.hero { position: relative; padding: 48px 0 56px; overflow: hidden; border-bottom: 1px solid var(--line); }
+@media (min-width: 960px) { .hero { padding: 72px 0 80px; } }
+.hero-grid { display: grid; gap: 28px; align-items: center; }
+.hero-grid > * { min-width: 0; }
+@media (min-width: 980px) { .hero-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 24px; } }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 12px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--ivory-2); padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(242, 236, 220, .02); }
+.eyebrow i { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 12px var(--lime); }
+h1 { font: 400 clamp(46px, 6.2vw, 88px)/.94 var(--display); letter-spacing: -.025em; margin: 18px 0 22px; text-wrap: balance; }
+h1 em { font-style: italic; color: var(--lime); padding-right: .04em; }
+.lede { font-size: clamp(17px, 1.6vw, 19px); color: var(--ivory-2); max-width: 33em; margin: 0 0 30px; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.mini-cmd { display: flex; align-items: stretch; margin-top: 26px; max-width: 520px; border: 1px solid var(--line-2); border-radius: 12px; background: rgba(12, 18, 24, .8); overflow: hidden; }
+.mini-cmd code { flex: 1; min-width: 0; padding: 13px 14px; font: 13.5px/1.4 var(--mono); color: var(--ivory); overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+.mini-cmd code::before { content: "$ "; color: var(--lime); }
+.mini-cmd .copy { border: 0; border-left: 1px solid var(--line-2); border-radius: 0; }
+.fine { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+.fine a { color: var(--ivory-2); }
+.stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; margin: 38px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); max-width: 560px; }
+@media (min-width: 560px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+.stats li { padding: 16px 12px 0 0; }
+.stats b { display: block; font: 400 clamp(36px, 4vw, 48px)/1 var(--display); color: var(--ivory); }
+.stats span { font: 12px/1.3 var(--mono); color: var(--muted); letter-spacing: .02em; }
 
-/* boardroom transcript */
-.room { background: var(--code-bg); color: var(--code-ink); border-radius: 12px; border: 1px solid #2a2823; overflow: hidden; box-shadow: 0 30px 60px -30px rgba(20,19,15,.5); }
-.room-head { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid #2a2823; font: 12px var(--mono); color: var(--code-dim); }
-.room-head i { width: 10px; height: 10px; border-radius: 50%; background: #3a3730; }
-.room-head i:first-child { background: var(--accent); }
-.room-head span { margin-left: auto; display: flex; align-items: center; gap: 6px; }
-.live { width: 7px; height: 7px; border-radius: 50%; background: #4cc38a; animation: pulse 1.6s infinite; }
-@keyframes pulse { 50% { opacity: .3; } }
-.room-body { padding: 18px 16px 20px; font: 13px/1.55 var(--mono); height: 380px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; gap: 12px; }
-.msg { opacity: 0; transform: translateY(6px); animation: in .35s forwards; }
-@keyframes in { to { opacity: 1; transform: none; } }
-.msg .who { color: var(--accent); }
-.msg .who.user { color: #8fb8ff; }
-.msg .who.sys { color: #4cc38a; }
-.msg p { margin: 2px 0 0; color: var(--code-ink); }
-.caret { display: inline-block; width: 7px; height: 14px; background: var(--code-ink); vertical-align: -2px; animation: pulse 1s steps(1) infinite; }
+/* hero art */
+.hero-art { position: relative; width: 100%; max-width: 640px; margin: 0 auto; aspect-ratio: 1 / 1; }
+.flow { position: absolute; inset: -6% -14% -6% -24%; width: 138%; height: 112%; max-width: none; pointer-events: none;
+  -webkit-mask-image: radial-gradient(closest-side at 58% 47%, #000 52%, transparent 100%); mask-image: radial-gradient(closest-side at 58% 47%, #000 52%, transparent 100%); }
+.layer { position: absolute; inset: 0; will-change: transform; }
+.bob { position: absolute; inset: 0; animation: bob 9s ease-in-out infinite; }
+.bob.b2 { animation-duration: 12s; animation-delay: -4s; }
+.bob.b3 { animation-duration: 7s; animation-delay: -2s; }
+@keyframes bob { 50% { transform: translate3d(0, -12px, 0); } }
+.core-svg { position: absolute; inset: -6%; width: 112%; height: 112%; max-width: none; }
+.spin { transform-origin: 50% 50%; transform-box: fill-box; animation: spin 80s linear infinite; }
+.spin.rev { animation-duration: 120s; animation-direction: reverse; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.pulse { animation: pulse 3.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes pulse { 50% { opacity: .45; } }
+.brand-row { display: flex; align-items: flex-end; gap: 14px; }
+.mascot-top { flex: none; width: clamp(84px, 9vw, 120px); animation: bob 9s ease-in-out infinite; filter: drop-shadow(0 14px 22px rgba(0, 0, 0, .55)) drop-shadow(0 0 22px rgba(198, 255, 61, .12)); }
+.mascot-top img { width: 100%; height: auto; }
+.brand-row .eyebrow { margin-bottom: 10px; white-space: nowrap; }
+@media (max-width: 480px) { .brand-row .eyebrow { font-size: 10.5px; letter-spacing: .08em; padding: 7px 10px; } }
+.mascot img { width: 100%; height: auto; }
+.chipf { position: absolute; display: inline-flex; align-items: center; gap: 8px; padding: 7px 11px; font: 12px/1 var(--mono); color: var(--ivory); background: rgba(9, 13, 18, .78); border: 1px solid var(--line-2); border-radius: 9px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); white-space: nowrap; }
+.chipf i { width: 6px; height: 6px; border-radius: 2px; background: var(--cyan); }
+.chipf.out i { background: var(--lime); box-shadow: 0 0 8px var(--lime); }
+.chipf.out { border-color: rgba(198, 255, 61, .35); }
+.c1 { left: 0; top: 17%; } .c2 { left: -3%; top: 36%; } .c3 { left: 2%; top: 55%; }
+.o1 { right: 0; top: 14%; } .o2 { right: -2%; top: 32%; } .o3 { right: 1%; top: 50%; }
+@media (max-width: 560px) { .chipf { font-size: 10.5px; padding: 6px 8px; } .c2, .o2 { display: none; } .c1 { top: 12%; } .c3 { top: 56%; } .o1 { top: 10%; } .o3 { top: 54%; } }
+.art-note { position: absolute; left: 0; right: 0; bottom: -4px; text-align: center; font: 11px/1 var(--mono); color: var(--muted); letter-spacing: .06em; }
 
 /* sections */
-section { padding: 72px 0; border-bottom: 1px solid var(--rule); }
-.sec-head { display: grid; gap: 12px; margin-bottom: 36px; }
-@media (min-width: 960px) { .sec-head { grid-template-columns: 1fr 1fr; align-items: end; gap: 56px; } }
-.num { font: 500 12px var(--mono); color: var(--accent); letter-spacing: .1em; }
-h2 { font: 400 clamp(36px, 5.4vw, 60px)/1 var(--serif); letter-spacing: -.015em; margin: 8px 0 0; }
-.sec-head p { color: var(--ink-2); margin: 0; max-width: 32em; }
+section.sec { position: relative; padding: 84px 0; border-bottom: 1px solid var(--line); }
+@media (min-width: 960px) { section.sec { padding: 120px 0; } }
+.sec-head { display: grid; gap: 14px; margin-bottom: 48px; }
+@media (min-width: 960px) { .sec-head { grid-template-columns: 1.1fr .9fr; gap: 64px; align-items: end; } }
+.kicker { font: 500 12px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--lime); display: flex; align-items: center; gap: 12px; }
+.kicker::after { content: ""; height: 1px; width: 56px; background: linear-gradient(90deg, var(--lime), transparent); }
+h2 { font: 400 clamp(36px, 5.2vw, 68px)/.98 var(--display); letter-spacing: -.02em; margin: 16px 0 0; text-wrap: balance; }
+.sec-head p { margin: 0; color: var(--ivory-2); max-width: 33em; font-size: 17px; }
 
-/* install tabs */
-.tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; }
-.tabs::-webkit-scrollbar { display: none; }
-.tab {
-  flex: none; border: 1px solid var(--rule); background: var(--card); color: var(--ink-2); border-radius: 999px;
-  padding: 8px 16px; font: 500 14px var(--sans); cursor: pointer;
+/* featured workflows */
+.feat { display: grid; gap: 22px; }
+@media (min-width: 900px) { .feat { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+.fcard { display: flex; flex-direction: column; min-width: 0; }
+.tilt-wrap { perspective: 1000px; }
+.thumb {
+  position: relative; aspect-ratio: 8 / 5; border-radius: 20px; overflow: hidden; border: 1px solid var(--line-2); background: var(--bg-2);
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transform-style: preserve-3d;
+  transition: transform .6s var(--ease), border-color .3s, box-shadow .4s;
+  box-shadow: 0 30px 60px -34px rgba(0, 0, 0, .9);
 }
-.tab[aria-selected="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-.panel { margin-top: 18px; display: grid; gap: 20px; }
-@media (min-width: 960px) { .panel { grid-template-columns: 1.4fr 1fr; gap: 32px; } }
-.panel[hidden] { display: none; }
-.steps { display: grid; gap: 14px; }
-.step-label { font: 500 12px var(--mono); color: var(--muted); margin-bottom: 6px; }
-.code {
-  position: relative; background: var(--code-bg); color: var(--code-ink); border-radius: 8px; border: 1px solid #2a2823;
-  font: 14px/1.6 var(--mono);
-}
-.code pre { margin: 0; padding: 16px 92px 16px 16px; overflow-x: auto; }
-.code .c { color: var(--code-dim); }
-.code .p { color: var(--accent); user-select: none; }
-.copy {
-  position: absolute; top: 10px; right: 10px; border: 1px solid #3a3730; background: #1f1d19; color: var(--code-ink);
-  border-radius: 5px; font: 500 12px var(--sans); padding: 5px 10px; cursor: pointer;
-}
-.copy:hover { border-color: var(--accent); }
-.copy.ok { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
-.aside { background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 20px; font-size: 15px; color: var(--ink-2); }
-.aside h3 { margin: 0 0 8px; font: 600 15px var(--sans); color: var(--ink); }
-.aside ul { margin: 0; padding-left: 18px; }
-.aside li { margin: 4px 0; }
-.aside code, p code, td code { font: 13px var(--mono); background: var(--paper-2); padding: 1px 5px; border-radius: 4px; color: var(--ink); }
-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-td { padding: 8px 0; border-top: 1px solid var(--rule); vertical-align: top; }
-td:first-child { padding-right: 12px; color: var(--ink); font-weight: 500; white-space: nowrap; }
+.thumb.live { transition: transform .12s linear, border-color .3s, box-shadow .4s; }
+.thumb:hover { border-color: rgba(198, 255, 61, .45); box-shadow: 0 40px 80px -36px rgba(198, 255, 61, .22); }
+.thumb svg { width: 100%; height: 100%; }
+.thumb::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(242, 236, 220, .13), transparent 45%); }
+.thumb:hover::after { opacity: 1; }
+.tag-row { display: flex; align-items: center; gap: 10px; margin: 22px 0 8px; font: 12px/1 var(--mono); color: var(--cyan); letter-spacing: .08em; text-transform: uppercase; }
+.tag-row b { color: var(--muted); font-weight: 500; }
+.fcard h3 { margin: 0 0 8px; font: 400 clamp(28px, 2.6vw, 34px)/1.05 var(--display); letter-spacing: -.01em; }
+.fcard p { margin: 0 0 18px; color: var(--ivory-2); font-size: 15.5px; }
+.fcard ul { list-style: none; padding: 0; margin: 0 0 22px; display: grid; gap: 7px; font-size: 14px; color: var(--ivory-2); }
+.fcard li { display: flex; gap: 10px; align-items: baseline; }
+.fcard li::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 2px; background: var(--lime); transform: translateY(-1px); }
+.cmd-chip { margin-top: auto; display: flex; align-items: stretch; border: 1px solid var(--line); border-radius: 12px; background: rgba(12, 18, 24, .7); overflow: hidden; }
+.cmd-chip code { flex: 1; min-width: 0; padding: 11px 12px; font: 12px/1.45 var(--mono); color: var(--ivory-2); white-space: normal; overflow-wrap: anywhere; }
+.cmd-chip .copy { border: 0; border-left: 1px solid var(--line); border-radius: 0; }
+
+/* art animation (inline SVG thumbnails) */
+.draw { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.in .draw { animation: draw 2.6s var(--ease) both; }
+@keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.drift { animation: drift 8s ease-in-out infinite; }
+.drift.d2 { animation-duration: 11s; animation-delay: -3s; }
+.drift.d3 { animation-duration: 9.5s; animation-delay: -6s; }
+@keyframes drift { 50% { transform: translate3d(0, -7px, 0); } }
+.dash-flow { stroke-dasharray: 5 9; animation: dashflow 2.4s linear infinite; }
+@keyframes dashflow { to { stroke-dashoffset: -28; } }
+.orbit { transform-origin: 320px 205px; animation: spin 90s linear infinite; }
+.blink { animation: pulse 3s ease-in-out infinite; }
+.is-off *, .is-off { animation-play-state: paused !important; }
+
+/* example */
+.ex { display: grid; gap: 20px; align-items: start; }
+@media (min-width: 960px) { .ex { grid-template-columns: 1fr 72px 1.25fr; gap: 0; } }
+.doc { background: linear-gradient(180deg, var(--panel-2), var(--panel)); border: 1px solid var(--line-2); border-radius: 18px; overflow: hidden; min-width: 0; }
+.doc-h { display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid var(--line); font: 12px/1 var(--mono); letter-spacing: .06em; color: var(--ivory-2); text-transform: uppercase; }
+.doc-h i { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); }
+.doc.out .doc-h i { background: var(--lime); box-shadow: 0 0 10px var(--lime); }
+.doc-h span { margin-left: auto; color: var(--muted); text-transform: none; letter-spacing: 0; }
+.doc-b { padding: 18px; display: grid; gap: 18px; font-size: 14.5px; }
+.tbl { width: 100%; border-collapse: collapse; font: 13.5px/1.4 var(--mono); }
+.tbl caption { text-align: left; font: 12px/1 var(--mono); color: var(--muted); padding: 0 0 10px; letter-spacing: .04em; }
+.tbl th { text-align: left; font-weight: 500; color: var(--muted); padding: 8px 8px 8px 0; border-bottom: 1px solid var(--line); }
+.tbl td { padding: 9px 8px 9px 0; border-bottom: 1px solid var(--line); color: var(--ivory); }
+.tbl .n { text-align: right; padding-right: 0; font-variant-numeric: tabular-nums; }
+.tbl th.n { text-align: right; padding-right: 0; }
+.pos { color: var(--lime); }
+.warn td { color: var(--ivory); }
+.flag { display: grid; gap: 8px; padding: 14px 16px; border: 1px dashed rgba(111, 211, 208, .55); border-radius: 12px; background: rgba(111, 211, 208, .05); font-size: 14px; color: var(--ivory-2); }
+.flag b { color: var(--cyan); font: 500 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.acts { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; counter-reset: a; }
+.acts li { counter-increment: a; display: grid; grid-template-columns: 26px 1fr; gap: 10px; color: var(--ivory-2); font-size: 14px; }
+.acts li::before { content: counter(a); width: 24px; height: 24px; border-radius: 7px; background: rgba(198, 255, 61, .12); color: var(--lime); font: 600 12px/24px var(--mono); text-align: center; }
+.acts span { color: var(--muted); font: 12px var(--mono); display: block; }
+.link-col { display: none; position: relative; }
+@media (min-width: 960px) { .link-col { display: block; } }
+.link-col svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.badge { display: inline-flex; align-items: center; gap: 8px; font: 500 11.5px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.ill { margin: 18px 0 0; color: var(--muted); font-size: 13.5px; }
 
 /* how */
-.how { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
-@media (min-width: 820px) { .how { grid-template-columns: repeat(4, 1fr); } }
-.how div { background: var(--card); padding: 24px 20px 28px; }
-.how b { font: 400 44px/1 var(--serif); color: var(--accent); }
-.how h3 { font: 600 16px var(--sans); margin: 14px 0 6px; }
-.how p { margin: 0; font-size: 14px; color: var(--ink-2); }
+.steps { counter-reset: s; display: grid; gap: 0; border-top: 1px solid var(--line-2); }
+@media (min-width: 760px) { .steps { grid-template-columns: repeat(2, 1fr); column-gap: 56px; } }
+@media (min-width: 1080px) { .steps { grid-template-columns: repeat(3, 1fr); column-gap: 40px; } }
+.step { counter-increment: s; padding: 28px 0 30px; border-bottom: 1px solid var(--line); position: relative; }
+.step::before { content: counter(s, decimal-leading-zero); display: block; font: 400 56px/1 var(--display); color: var(--lime); opacity: .9; margin-bottom: 14px; }
+.step h3 { margin: 0 0 8px; font: 600 18px/1.3 var(--sans); letter-spacing: -.005em; }
+.step p { margin: 0; color: var(--ivory-2); font-size: 15px; }
+.status3 { display: grid; gap: 12px; margin-top: 44px; }
+@media (min-width: 760px) { .status3 { grid-template-columns: repeat(3, 1fr); } }
+.st { border: 1px solid var(--line); border-radius: 14px; padding: 18px; background: rgba(12, 18, 24, .55); }
+.st b { display: flex; align-items: center; gap: 10px; font: 600 15px var(--sans); margin-bottom: 6px; }
+.st b i { width: 10px; height: 10px; border-radius: 50%; }
+.st.pass b i { background: var(--lime); box-shadow: 0 0 10px var(--lime); }
+.st.prov b i { background: var(--cyan); }
+.st.blk b i { background: transparent; border: 2px solid var(--ivory-2); }
+.st p { margin: 0; font-size: 14px; color: var(--ivory-2); }
+.caveat { margin: 26px 0 0; color: var(--muted); font-size: 14px; max-width: 54em; }
 
-/* commands */
-.cmds { display: grid; gap: 10px; }
-@media (min-width: 640px) { .cmds { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 960px) { .cmds { grid-template-columns: repeat(3, 1fr); } }
-.cmd {
-  text-align: left; border: 1px solid var(--rule); background: var(--card); color: var(--ink); border-radius: 10px;
-  padding: 16px 18px; cursor: pointer; font: inherit; display: grid; gap: 4px; transition: transform .15s, border-color .15s;
-}
-.cmd:hover { border-color: var(--ink); transform: translateY(-2px); }
-.cmd code { font: 500 15px var(--mono); color: var(--accent); }
-.cmd span { font-size: 14px; color: var(--ink-2); }
-.cmd small { font: 11px var(--mono); color: var(--muted); margin-top: 6px; }
-.example { margin-top: 24px; }
-
-/* agents */
-.filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 20px; }
-.search {
-  flex: 1 1 240px; height: 40px; border: 1px solid var(--rule); background: var(--card); color: var(--ink); border-radius: 8px;
-  padding: 0 14px; font: 15px var(--sans); min-width: 0;
-}
-.search:focus { outline: 2px solid var(--accent); outline-offset: -1px; border-color: transparent; }
-.chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chip { border: 1px solid var(--rule); background: transparent; color: var(--ink-2); border-radius: 999px; padding: 6px 12px; font: 500 13px var(--sans); cursor: pointer; }
-.chip[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
-.chip em { font-style: normal; opacity: .6; margin-left: 4px; }
-.grid { display: grid; gap: 10px; }
+/* library */
+.lib-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 18px; }
+.seg { display: inline-flex; padding: 4px; border: 1px solid var(--line-2); border-radius: 14px; background: rgba(12, 18, 24, .7); gap: 4px; }
+.seg button { border: 0; background: transparent; color: var(--ivory-2); padding: 10px 18px; border-radius: 10px; font: 500 14.5px/1 var(--sans); cursor: pointer; transition: background .25s, color .25s; }
+.seg button em { font-style: normal; font-family: var(--mono); font-size: 12px; opacity: .65; margin-left: 6px; }
+.seg button[aria-selected="true"] { background: var(--lime); color: var(--ink); font-weight: 600; }
+.search-wrap { position: relative; flex: 1 1 280px; min-width: 0; }
+.search-wrap svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+.search { width: 100%; height: 48px; padding: 0 16px 0 42px; border: 1px solid var(--line-2); border-radius: 12px; background: rgba(12, 18, 24, .7); color: var(--ivory); font: 15px var(--sans); transition: border-color .2s, box-shadow .2s; }
+.search::placeholder { color: var(--muted); }
+.search:focus { outline: none; border-color: var(--lime); box-shadow: 0 0 0 3px rgba(198, 255, 61, .18); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.chip { border: 1px solid var(--line-2); background: transparent; color: var(--ivory-2); border-radius: 999px; padding: 8px 14px; min-height: 36px; font: 500 13.5px/1 var(--sans); cursor: pointer; transition: border-color .2s, background .2s, color .2s, transform .2s; }
+.chip:hover { border-color: rgba(198, 255, 61, .55); color: var(--ivory); }
+.chip:active { transform: scale(.97); }
+.chip em { font: normal 11.5px var(--mono); opacity: .6; margin-left: 6px; }
+.chip[aria-pressed="true"] { background: rgba(198, 255, 61, .14); border-color: var(--lime); color: var(--lime); }
+.count { margin: 0 0 14px; font: 12.5px var(--mono); color: var(--muted); }
+.grid { display: grid; gap: 12px; }
 @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 960px) { .grid { grid-template-columns: repeat(3, 1fr); } }
-.agent {
-  border: 1px solid var(--rule); background: var(--card); border-radius: 10px; padding: 14px 16px; cursor: pointer;
-  display: grid; gap: 4px; text-align: left; font: inherit; color: var(--ink);
+@media (min-width: 980px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+.item {
+  position: relative; text-align: left; display: grid; gap: 7px; align-content: start; padding: 18px 18px 16px; min-width: 0;
+  border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(180deg, rgba(16, 24, 32, .8), rgba(12, 18, 24, .6)); color: var(--ivory); font: inherit; cursor: pointer;
+  transition: transform .3s var(--ease), border-color .25s, background .25s;
 }
-.agent:hover { border-color: var(--ink); }
-.agent .tag { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
-.agent .role { font-weight: 500; line-height: 1.35; }
-.agent code { font: 13px var(--mono); color: var(--accent); }
-.empty { color: var(--muted); padding: 24px 0; }
+.item:hover { transform: translateY(-3px); border-color: rgba(198, 255, 61, .5); }
+.item:active { transform: translateY(0) scale(.99); }
+.item .t { font: 500 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--cyan); }
+.item .r { font-weight: 500; line-height: 1.35; font-size: 15.5px; }
+.item .d { color: var(--ivory-2); font-size: 14px; line-height: 1.45; }
+.item code { font: 12.5px var(--mono); color: var(--lime); word-break: break-all; }
+.item .cp { position: absolute; top: 14px; right: 14px; font: 11px var(--mono); color: var(--muted); opacity: 0; transition: opacity .2s; }
+.item:hover .cp, .item:focus-visible .cp { opacity: 1; }
+.empty { grid-column: 1 / -1; padding: 28px; border: 1px dashed var(--line-2); border-radius: 16px; color: var(--ivory-2); }
+.empty a { color: var(--lime); }
+.hint-line { margin: 22px 0 0; color: var(--muted); font-size: 14px; }
 
-/* punchline */
-.qa { display: grid; gap: 0; border-top: 1px solid var(--ink); }
-.qa div { display: grid; gap: 6px; padding: 28px 0; border-bottom: 1px solid var(--rule); }
-@media (min-width: 820px) { .qa div { grid-template-columns: 1fr 1fr; gap: 56px; align-items: baseline; } }
-.qa q { font: italic 400 clamp(26px, 3.6vw, 40px)/1.15 var(--serif); quotes: none; }
-.qa strong { font: 400 clamp(32px, 4.6vw, 56px)/1 var(--serif); }
-.qa strong.yes { color: var(--accent); }
+/* install */
+.tabs { display: flex; gap: 8px; overflow-x: auto; padding: 2px 2px 6px; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { flex: none; border: 1px solid var(--line-2); background: transparent; color: var(--ivory-2); border-radius: 999px; padding: 11px 18px; font: 500 14.5px/1 var(--sans); cursor: pointer; transition: border-color .2s, color .2s, background .2s; }
+.tab:hover { color: var(--ivory); border-color: rgba(198, 255, 61, .5); }
+.tab[aria-selected="true"] { background: var(--ivory); color: var(--ink); border-color: var(--ivory); font-weight: 600; }
+.panel { margin-top: 20px; display: grid; gap: 22px; }
+.panel[hidden] { display: none; }
+.panel:not([hidden]) { animation: panelin .45s var(--ease) both; }
+@keyframes panelin { from { opacity: 0; transform: translateY(8px); } }
+@media (min-width: 980px) { .panel { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 32px; } }
+.panel { grid-template-columns: minmax(0, 1fr); }
+.panel > *, .stack > * { min-width: 0; }
+.stack { display: grid; gap: 18px; align-content: start; }
+.lab { font: 500 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.code { position: relative; border: 1px solid var(--line-2); border-radius: 14px; background: #070b0f; overflow: hidden; }
+.code::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(var(--lime), var(--cyan)); }
+.code pre { margin: 0; padding: 16px 92px 16px 20px; overflow-x: auto; font: 13.5px/1.65 var(--mono); color: var(--ivory); tab-size: 2; }
+.code pre code { font: inherit; white-space: pre; }
+.code.wrap pre code { white-space: pre-wrap; word-break: break-word; }
+.code .copy { position: absolute; top: 10px; right: 10px; }
+.copy { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line-2); background: rgba(12, 18, 24, .9); color: var(--ivory); border-radius: 9px; font: 500 12.5px/1 var(--sans); padding: 8px 12px; min-height: 34px; cursor: pointer; transition: background .2s, color .2s, border-color .2s, transform .2s; }
+.copy:hover { border-color: var(--lime); color: var(--lime); }
+.copy:active { transform: scale(.95); }
+.copy.ok { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+.aside { border: 1px solid var(--line); border-radius: 16px; padding: 22px; background: rgba(12, 18, 24, .55); color: var(--ivory-2); font-size: 14.5px; align-self: start; }
+.aside h3 { margin: 0 0 10px; font: 600 16px var(--sans); color: var(--ivory); }
+.aside ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+.aside p { margin: 10px 0 0; }
+.aside code, p code { font: 12.5px var(--mono); background: rgba(242, 236, 220, .08); padding: 2px 6px; border-radius: 5px; color: var(--ivory); }
+.idt { width: 100%; border-collapse: collapse; margin-top: 4px; font-size: 13.5px; }
+.idt td { padding: 8px 0; border-top: 1px solid var(--line); vertical-align: top; }
+.idt td:first-child { color: var(--ivory-2); padding-right: 12px; }
+.idt td:last-child { text-align: right; }
+.name-note { margin-top: 28px; }
 
-footer { padding: 40px 0 56px; color: var(--muted); font-size: 14px; }
-footer .wrap { display: grid; gap: 16px; }
-@media (min-width: 820px) { footer .wrap { grid-template-columns: 2fr 1fr; } }
-footer .links { display: flex; gap: 18px; flex-wrap: wrap; }
+/* final cta */
+.final { position: relative; overflow: hidden; text-align: center; padding: 100px 0 90px; }
+@media (min-width: 960px) { .final { padding: 140px 0 120px; } }
+.final::before { content: ""; position: absolute; left: 50%; top: 50%; width: 900px; height: 560px; max-width: 140%; transform: translate(-50%, -50%); background: radial-gradient(closest-side, rgba(198, 255, 61, .13), transparent); pointer-events: none; }
+.final .mini { position: relative; width: 132px; margin: 0 auto 8px; filter: drop-shadow(0 18px 28px rgba(0, 0, 0, .6)); }
+.final h2 { max-width: 14em; margin-left: auto; margin-right: auto; }
+.final p { position: relative; color: var(--ivory-2); max-width: 34em; margin: 18px auto 32px; font-size: 18px; }
+.final .cta-row { justify-content: center; position: relative; }
+
+footer { padding: 40px 0 56px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+footer .wrap { display: grid; gap: 22px; }
+@media (min-width: 820px) { footer .wrap { grid-template-columns: 1.7fr 1fr; gap: 56px; } }
+footer p { margin: 0 0 8px; max-width: 46em; }
+footer .links { display: flex; gap: 20px; flex-wrap: wrap; align-content: start; }
 @media (min-width: 820px) { footer .links { justify-content: flex-end; } }
+footer a { color: var(--ivory-2); text-decoration: none; border-bottom: 1px solid var(--line-2); }
+footer a:hover { color: var(--lime); border-color: var(--lime); }
 
-.toast {
-  position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
-  background: var(--ink); color: var(--paper); padding: 10px 16px; border-radius: 8px; font: 500 14px var(--sans);
-  transition: .2s; z-index: 50; max-width: calc(100vw - 32px);
-}
+.toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; background: var(--ivory); color: var(--ink); padding: 11px 18px; border-radius: 12px; font: 500 14px var(--sans); transition: transform .35s var(--ease), opacity .25s; z-index: 80; max-width: calc(100vw - 32px); box-shadow: 0 20px 50px -10px rgba(0, 0, 0, .7); }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
+/* reveal */
+.js .rv { opacity: 0; transform: translate3d(0, 26px, 0); transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: calc(var(--i, 0) * 90ms); }
+.js .rv.in { opacity: 1; transform: none; }
+
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .msg { opacity: 1; transform: none; }
+  .js .rv { opacity: 1; transform: none; }
+  .thumb { transform: none !important; }
 }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="#top">
-      <span class="mark"><svg width="16" height="16" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 26V6h5v20zm9 0V12h5v14zm9 0v-8h5v8z" fill="#14130f"/></svg></span>
-      Senior Consulting Agents
+    <a class="brand" href="#top" aria-label="Firmcraft home">
+      <span class="mk" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 32 32"><path d="M8 26V6h17v5.5H14.5V14H23v5.5h-8.5V26z" fill="#05070a"/></svg></span>
+      Firmcraft
     </a>
     <nav class="nav-links" aria-label="Sections">
-      <a href="#install">Install</a>
+      <a href="#workflows">Workflows</a>
+      <a href="#example">Example</a>
       <a href="#how">How it works</a>
-      <a href="#commands">Commands</a>
-      <a href="#agents">Agents</a>
+      <a href="#library">Library</a>
+      <a href="#install">Install</a>
     </nav>
-    <div class="nav-cta">
-      <button class="btn icon-btn" id="theme" aria-label="Toggle color theme" title="Toggle theme">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-      </button>
-      <a class="btn" href="https://github.com/Lameda12/senior-consulting-agents" target="_blank" rel="noopener">
+    <div class="nav-right">
+      <a class="btn sm" href="https://github.com/Lameda12/Firmcraft-skill" target="_blank" rel="noopener">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>
         <span>GitHub</span>
       </a>
+      <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
   </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Sections (mobile)">
+    <a href="#workflows">Workflows</a>
+    <a href="#example">Example</a>
+    <a href="#how">How it works</a>
+    <a href="#library">Library</a>
+    <a href="#install">Install</a>
+  </nav>
 </header>
 
-<main id="top">
-  <div class="hero">
+<main id="main">
+  <!-- 1 · HERO -->
+  <div class="hero" id="top">
     <div class="wrap hero-grid">
       <div>
-        <div class="eyebrow"><span class="dot"></span>Open source AI skills · MIT</div>
-        <h1>Consulting, now with <em>more agents</em> arguing.</h1>
-        <p class="lede">One AI agent making things up wasn't enough. So here are 54 senior consulting agents that collaborate on the problems consultants have spent years turning into PowerPoint. Install them into the AI tool you already use, in one command.</p>
-        <div class="oneliner">
-          <code id="hero-cmd">npx skills add Lameda12/senior-consulting-agents</code>
-          <button data-copy-target="hero-cmd">Copy</button>
+        <div class="brand-row rv">
+          <div class="mascot-top">
+            <picture>
+              <source srcset="assets/firmcraft-mascot.webp" type="image/webp">
+              <img src="assets/firmcraft-mascot.png" width="860" height="852" alt="Firmcraft's beaver mascot in a navy vest, holding a teal evidence checklist." fetchpriority="high">
+            </picture>
+          </div>
+          <div class="eyebrow"><i></i>Open source · MIT licensed</div>
         </div>
-        <p class="hint">Works with Claude Code, Codex, Gemini CLI, Cursor, OpenCode, Cline, Copilot and more. <a href="#install">Other install options</a></p>
-        <div class="stats">
-          <div><b>54</b><span>senior agents</span></div>
-          <div><b>11</b><span>commands</span></div>
-          <div><b>2</b><span>skills</span></div>
-          <div><b>0</b><span>meetings</span></div>
+        <h1 class="rv" style="--i:1">Turn business evidence into <em>reviewable</em> work.</h1>
+        <p class="lede rv" style="--i:2">Firmcraft gives the assistant you already use 13 B2B workflows and 54 specialist personas for management reports, supplier-risk reviews and proposals. Each draft keeps its sources, gaps and open decisions in view.</p>
+        <div class="cta-row rv" style="--i:3">
+          <a class="btn primary" href="#install">Install Firmcraft
+            <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn" href="#workflows">Explore workflows</a>
         </div>
+        <div class="mini-cmd rv" style="--i:4">
+          <code id="hero-cmd">npx skills add Lameda12/Firmcraft-skill</code>
+          <button class="copy" type="button" data-copy-target="hero-cmd" aria-label="Copy install command">Copy</button>
+        </div>
+        <p class="fine rv" style="--i:4">Works as a Claude Code plugin or a portable skill. <a href="#install">All install routes</a></p>
+        <ul class="stats rv" style="--i:5" aria-label="What is in the library">
+          <li><b>54</b><span>specialist personas</span></li>
+          <li><b>13</b><span>workflows</span></li>
+          <li><b>7</b><span>sector personas</span></li>
+          <li><b>2</b><span>portable skills</span></li>
+        </ul>
       </div>
-      <div class="room" aria-label="Example of agents discussing a request">
-        <div class="room-head"><i></i><i></i><i></i>&nbsp; /engage · steering-committee.log <span><b class="live"></b>live</span></div>
-        <div class="room-body" id="room" aria-live="off"></div>
+
+      <div class="hero-art rv" style="--i:2" id="hero-art" role="img" aria-label="Illustration: evidence files flow into a glowing intelligence core and leave as report sheets,.">
+        <canvas class="flow" id="flow" aria-hidden="true"></canvas>
+        <div class="layer" data-depth="10"><div class="bob b2"><svg class="core-svg" viewBox="0 0 600 600" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="h-halo" cx="50%" cy="46%" r="50%"><stop offset="0" stop-color="#c6ff3d" stop-opacity=".34"/><stop offset=".38" stop-color="#6fd3d0" stop-opacity=".12"/><stop offset="1" stop-color="#05070a" stop-opacity="0"/></radialGradient>
+    <radialGradient id="h-core" cx="38%" cy="32%" r="78%"><stop offset="0" stop-color="#f4ffd0"/><stop offset=".22" stop-color="#c6ff3d"/><stop offset=".6" stop-color="#2d4a12"/><stop offset="1" stop-color="#07100a"/></radialGradient>
+    <linearGradient id="h-ring" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6fd3d0" stop-opacity="0"/><stop offset=".5" stop-color="#c6ff3d" stop-opacity=".85"/><stop offset="1" stop-color="#6fd3d0" stop-opacity="0"/></linearGradient>
+    <linearGradient id="h-sheet" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2ecdc" stop-opacity=".26"/><stop offset="1" stop-color="#f2ecdc" stop-opacity=".04"/></linearGradient>
+    <filter id="h-blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
+    <filter id="h-soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4"/></filter>
+    <clipPath id="h-sph"><circle cx="300" cy="262" r="92"/></clipPath>
+  </defs>
+  <circle cx="300" cy="262" r="270" fill="url(#h-halo)"/>
+
+  <!-- outer rings -->
+  <g fill="none" stroke-linecap="round">
+    <g class="spin"><ellipse cx="300" cy="262" rx="250" ry="84" transform="rotate(-18 300 262)" stroke="#f2ecdc" stroke-opacity=".13" stroke-dasharray="2 9"/></g>
+    <g class="spin rev"><ellipse cx="300" cy="262" rx="206" ry="62" transform="rotate(24 300 262)" stroke="#6fd3d0" stroke-opacity=".28"/></g>
+    <ellipse cx="300" cy="262" rx="170" ry="46" transform="rotate(-8 300 262)" stroke="url(#h-ring)" stroke-width="1.6"/>
+  </g>
+
+  <!-- agent nodes on the orbit -->
+  <g class="spin" style="animation-duration:60s">
+    <g transform="rotate(-18 300 262)">
+      <circle cx="550" cy="262" r="5.5" fill="#05070a" stroke="#6fd3d0" stroke-width="2"/>
+      <circle cx="50" cy="262" r="5.5" fill="#05070a" stroke="#6fd3d0" stroke-width="2"/>
+      <circle cx="300" cy="178" r="4" fill="#c6ff3d"/>
+      <circle cx="300" cy="346" r="4" fill="#c6ff3d" opacity=".6"/>
+    </g>
+  </g>
+  <g class="spin rev" style="animation-duration:90s">
+    <g transform="rotate(24 300 262)">
+      <circle cx="506" cy="262" r="4.5" fill="#c6ff3d"/><circle cx="94" cy="262" r="4.5" fill="#05070a" stroke="#c6ff3d" stroke-width="1.8"/>
+    </g>
+  </g>
+
+  <!-- incoming evidence lines -->
+  <g fill="none" stroke="#6fd3d0" stroke-linecap="round" stroke-opacity=".5">
+    <path class="dash-flow" d="M70 118 C150 130 190 200 214 242"/>
+    <path class="dash-flow" d="M44 236 C110 238 170 252 208 262"/>
+    <path class="dash-flow" d="M70 352 C140 340 188 300 214 282"/>
+  </g>
+  <!-- outgoing lines -->
+  <g fill="none" stroke="#c6ff3d" stroke-linecap="round" stroke-opacity=".6">
+    <path class="dash-flow" d="M384 244 C430 220 470 160 520 112"/>
+    <path class="dash-flow" d="M392 262 C440 256 490 238 556 226"/>
+    <path class="dash-flow" d="M384 280 C440 290 490 308 540 332"/>
+  </g>
+
+  <!-- the core -->
+  <g class="pulse"><circle cx="300" cy="262" r="118" fill="#c6ff3d" opacity=".16" filter="url(#h-blur)"/></g>
+  <circle cx="300" cy="262" r="92" fill="url(#h-core)"/>
+  <g clip-path="url(#h-sph)" fill="none" stroke="#05070a" stroke-opacity=".42" stroke-width="1">
+    <ellipse cx="300" cy="262" rx="92" ry="30"/><ellipse cx="300" cy="262" rx="92" ry="62"/>
+    <ellipse cx="300" cy="262" rx="30" ry="92"/><ellipse cx="300" cy="262" rx="62" ry="92"/>
+    <path d="M208 262H392M300 170V354"/>
+    <path d="M222 205 L300 236 L378 205 M222 319 L300 288 L378 319" stroke-opacity=".3"/>
+  </g>
+  <circle cx="300" cy="262" r="92" fill="none" stroke="#eaffa8" stroke-opacity=".7" stroke-width="1.4"/>
+  <circle cx="300" cy="262" r="30" fill="#05070a" fill-opacity=".35"/>
+  <circle cx="300" cy="262" r="6" fill="#f4ffd0"/>
+
+  <!-- report sheets leaving the core -->
+  <g class="bob b2" style="inset:auto">
+    <g transform="translate(446 296) rotate(8) skewX(-6)"><rect width="110" height="82" rx="10" fill="url(#h-sheet)" stroke="#f2ecdc" stroke-opacity=".28"/><rect x="12" y="14" width="44" height="6" rx="3" fill="#f2ecdc" fill-opacity=".45"/><rect x="12" y="30" width="86" height="4" rx="2" fill="#f2ecdc" fill-opacity=".18"/><rect x="12" y="40" width="70" height="4" rx="2" fill="#f2ecdc" fill-opacity=".18"/><rect x="12" y="56" width="30" height="12" rx="3" fill="#c6ff3d" fill-opacity=".8"/></g>
+  </g>
+  <g class="bob" style="inset:auto">
+    <g transform="translate(470 96) rotate(-9) skewX(-4)"><rect width="100" height="74" rx="10" fill="url(#h-sheet)" stroke="#f2ecdc" stroke-opacity=".28"/><rect x="12" y="14" width="40" height="6" rx="3" fill="#f2ecdc" fill-opacity=".45"/><path d="M14 58 L34 46 L52 52 L74 30 L88 36" fill="none" stroke="#c6ff3d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+  </g>
+  <g fill="#f2ecdc"><circle cx="80" cy="60" r="1.6" opacity=".5"/><circle cx="540" cy="48" r="1.4" opacity=".4"/><circle cx="30" cy="420" r="1.3" opacity=".4"/></g>
+</svg></div></div>
+        <div class="layer" data-depth="22" aria-hidden="true">
+          <span class="chipf c1"><i></i>actuals.csv</span>
+          <span class="chipf c2"><i></i>supplier-contract.pdf</span>
+          <span class="chipf c3"><i></i>rfp-requirements.docx</span>
+          <span class="chipf out o1"><i></i>variance-table</span>
+          <span class="chipf out o2"><i></i>risk-register</span>
+          <span class="chipf out o3"><i></i>requirement-matrix</span>
+        </div>
+        <p class="art-note">Illustrative file names</p>
       </div>
     </div>
   </div>
 
-  <section id="install">
+  <!-- 2 · FEATURED WORKFLOWS -->
+  <section class="sec" id="workflows" aria-labelledby="h-wf">
     <div class="wrap">
       <div class="sec-head">
-        <div><div class="num">01 / INSTALL</div><h2>Pick your tool. Paste one line.</h2></div>
-        <p>No account, no API key, no signup form. The skills are plain Markdown files your agent reads when a request needs them.</p>
+        <div class="rv"><div class="kicker">01 · Featured workflows</div><h2 id="h-wf">Three jobs worth handing over first.</h2></div>
+        <p class="rv" style="--i:1">These have the most detailed instructions in the library. Give the assistant your files, name the workflow and review what comes back.</p>
       </div>
+      <div class="feat">
+        <article class="fcard rv">
+          <div class="tilt-wrap"><div class="thumb tilt" data-art><svg viewBox="0 0 640 400" role="img" aria-label="Illustration: layered report sheets with a luminous variance chart" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="r-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d1620"/><stop offset="1" stop-color="#05070a"/></linearGradient>
+    <radialGradient id="r-glow" cx="58%" cy="52%" r="48%"><stop offset="0" stop-color="#c6ff3d" stop-opacity=".28"/><stop offset=".55" stop-color="#6fd3d0" stop-opacity=".08"/><stop offset="1" stop-color="#05070a" stop-opacity="0"/></radialGradient>
+    <linearGradient id="r-sheet" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2ecdc" stop-opacity=".16"/><stop offset="1" stop-color="#f2ecdc" stop-opacity=".03"/></linearGradient>
+    <linearGradient id="r-sheet-f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16222d"/><stop offset="1" stop-color="#0a1118"/></linearGradient>
+    <linearGradient id="r-line" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6fd3d0"/><stop offset=".6" stop-color="#c6ff3d"/><stop offset="1" stop-color="#eaffa8"/></linearGradient>
+    <linearGradient id="r-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c6ff3d" stop-opacity=".42"/><stop offset="1" stop-color="#c6ff3d" stop-opacity="0"/></linearGradient>
+    <linearGradient id="r-bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6fd3d0" stop-opacity=".55"/><stop offset="1" stop-color="#6fd3d0" stop-opacity=".04"/></linearGradient>
+    <pattern id="r-grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#f2ecdc" stroke-opacity=".05"/></pattern>
+    <filter id="r-blur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="7"/></filter>
+    <filter id="r-soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
+    <filter id="r-noise" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="4"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 .95  0 0 0 0 .85  0 0 0 .55 0"/></filter>
+    <clipPath id="r-clip"><rect x="0" y="0" width="640" height="400"/></clipPath>
+  </defs>
+  <g clip-path="url(#r-clip)">
+    <rect width="640" height="400" fill="url(#r-bg)"/>
+    <rect width="640" height="400" fill="url(#r-grid)"/>
+    <rect width="640" height="400" fill="url(#r-glow)"/>
 
-      <div class="tabs" role="tablist" aria-label="Install target">
-        <button class="tab" role="tab" aria-selected="true" aria-controls="p-any" id="t-any">Any agent</button>
-        <button class="tab" role="tab" aria-selected="false" aria-controls="p-claude" id="t-claude">Claude Code plugin</button>
-        <button class="tab" role="tab" aria-selected="false" aria-controls="p-gemini" id="t-gemini">Gemini CLI</button>
-        <button class="tab" role="tab" aria-selected="false" aria-controls="p-manual" id="t-manual">Manual copy</button>
-        <button class="tab" role="tab" aria-selected="false" aria-controls="p-chat" id="t-chat">Any chat / API</button>
-      </div>
+    <!-- back sheets -->
+    <g class="drift d3">
+      <g transform="translate(168 54) rotate(-11) skewX(-6)">
+        <rect width="300" height="262" rx="16" fill="url(#r-sheet)" stroke="#f2ecdc" stroke-opacity=".14"/>
+        <rect x="22" y="24" width="96" height="9" rx="4.5" fill="#f2ecdc" fill-opacity=".22"/>
+        <rect x="22" y="44" width="150" height="6" rx="3" fill="#f2ecdc" fill-opacity=".1"/>
+        <rect x="22" y="58" width="120" height="6" rx="3" fill="#f2ecdc" fill-opacity=".1"/>
+      </g>
+    </g>
+    <g class="drift d2">
+      <g transform="translate(206 66) rotate(-5) skewX(-3)">
+        <rect width="316" height="274" rx="16" fill="url(#r-sheet)" stroke="#f2ecdc" stroke-opacity=".2"/>
+        <rect x="22" y="22" width="110" height="9" rx="4.5" fill="#f2ecdc" fill-opacity=".28"/>
+        <g fill="#f2ecdc" fill-opacity=".12"><rect x="22" y="228" width="160" height="6" rx="3"/><rect x="22" y="242" width="110" height="6" rx="3"/></g>
+      </g>
+    </g>
 
-      <div class="panel" role="tabpanel" id="p-any" aria-labelledby="t-any">
-        <div class="steps">
-          <div>
-            <div class="step-label">Run in your terminal</div>
-            <div class="code"><pre><span class="p">$ </span>npx skills add Lameda12/senior-consulting-agents</pre><button class="copy">Copy</button></div>
-          </div>
-          <div>
-            <div class="step-label">Then just ask your agent</div>
-            <div class="code"><pre><span class="c"># the router skill picks the right 1-3 personas</span>
-Draft an audit planning memo for a Canadian SaaS company with $40M ARR</pre><button class="copy">Copy</button></div>
-          </div>
-        </div>
-        <div class="aside">
-          <h3>Works with anything that supports Agent Skills</h3>
-          <ul>
-            <li>Codex CLI, Gemini CLI, OpenCode</li>
-            <li>Cursor, Cline, GitHub Copilot</li>
-            <li>Claude Code (skills only; use the plugin tab for subagents and commands)</li>
-          </ul>
-          <p style="margin:12px 0 0">Needs Node.js 18+ for <code>npx</code>.</p>
-        </div>
-      </div>
+    <!-- front sheet with chart -->
+    <g class="drift">
+      <g transform="translate(240 78) rotate(2) skewX(1.5)">
+        <rect x="-6" y="14" width="352" height="258" rx="20" fill="#000" opacity=".5" filter="url(#r-blur)"/>
+        <rect width="344" height="262" rx="20" fill="url(#r-sheet-f)" stroke="#f2ecdc" stroke-opacity=".28"/>
+        <rect width="344" height="262" rx="20" fill="url(#r-noise)" opacity=".05"/>
+        <path d="M0 20 Q0 0 20 0 H324 Q344 0 344 20" fill="none" stroke="#c6ff3d" stroke-opacity=".55"/>
+        <rect x="22" y="22" width="84" height="9" rx="4.5" fill="#f2ecdc" fill-opacity=".5"/>
+        <rect x="22" y="40" width="140" height="6" rx="3" fill="#f2ecdc" fill-opacity=".16"/>
+        <!-- kpi tabs -->
+        <g transform="translate(240 20)"><rect width="82" height="26" rx="8" fill="#c6ff3d" fill-opacity=".12" stroke="#c6ff3d" stroke-opacity=".5"/><rect x="12" y="10" width="34" height="6" rx="3" fill="#c6ff3d"/><path d="M58 17l5-6 5 6" fill="none" stroke="#c6ff3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+        <!-- axes -->
+        <g stroke="#f2ecdc" stroke-opacity=".1"><path d="M22 96H322M22 138H322M22 180H322M22 222H322"/></g>
+        <!-- bars -->
+        <g>
+          <rect x="34" y="176" width="22" height="46" rx="4" fill="url(#r-bar)"/>
+          <rect x="82" y="162" width="22" height="60" rx="4" fill="url(#r-bar)"/>
+          <rect x="130" y="170" width="22" height="52" rx="4" fill="url(#r-bar)"/>
+          <rect x="178" y="146" width="22" height="76" rx="4" fill="url(#r-bar)"/>
+          <rect x="226" y="132" width="22" height="90" rx="4" fill="url(#r-bar)"/>
+          <rect x="274" y="112" width="22" height="110" rx="4" fill="url(#r-bar)"/>
+        </g>
+        <!-- budget line -->
+        <path d="M22 160 H322" stroke="#f2ecdc" stroke-opacity=".5" stroke-dasharray="3 6" fill="none"/>
+        <!-- area + line -->
+        <path d="M45 188 C80 176 98 150 141 158 S196 118 237 112 S292 84 311 78 V222 H45Z" fill="url(#r-area)"/>
+        <path pathLength="1" class="draw" d="M45 188 C80 176 98 150 141 158 S196 118 237 112 S292 84 311 78" fill="none" stroke="#c6ff3d" stroke-width="9" stroke-linecap="round" opacity=".55" filter="url(#r-soft)"/>
+        <path pathLength="1" class="draw" d="M45 188 C80 176 98 150 141 158 S196 118 237 112 S292 84 311 78" fill="none" stroke="url(#r-line)" stroke-width="3.5" stroke-linecap="round"/>
+        <g fill="#05070a" stroke="#c6ff3d" stroke-width="2.5"><circle cx="45" cy="188" r="5"/><circle cx="141" cy="158" r="5"/><circle cx="237" cy="112" r="5"/></g>
+        <g class="blink"><circle cx="311" cy="78" r="16" fill="#c6ff3d" opacity=".3" filter="url(#r-soft)"/><circle cx="311" cy="78" r="6.5" fill="#eaffa8" stroke="#c6ff3d" stroke-width="2"/></g>
+        <!-- variance bracket -->
+        <path d="M311 86V158" stroke="#6fd3d0" stroke-width="1.5" stroke-dasharray="2 4"/>
+        <path d="M303 158h16" stroke="#6fd3d0" stroke-width="2" stroke-linecap="round"/>
+        <!-- baseline ticks -->
+        <g fill="#f2ecdc" fill-opacity=".3"><rect x="34" y="236" width="22" height="4" rx="2"/><rect x="82" y="236" width="22" height="4" rx="2"/><rect x="130" y="236" width="22" height="4" rx="2"/><rect x="178" y="236" width="22" height="4" rx="2"/><rect x="226" y="236" width="22" height="4" rx="2"/><rect x="274" y="236" width="22" height="4" rx="2"/></g>
+      </g>
+    </g>
 
-      <div class="panel" role="tabpanel" id="p-claude" aria-labelledby="t-claude" hidden>
-        <div class="steps">
-          <div>
-            <div class="step-label">1 · Inside Claude Code, add the marketplace</div>
-            <div class="code"><pre><span class="p">&gt; </span>/plugin marketplace add Lameda12/senior-consulting-agents</pre><button class="copy">Copy</button></div>
-          </div>
-          <div>
-            <div class="step-label">2 · Install the plugin</div>
-            <div class="code"><pre><span class="p">&gt; </span>/plugin install senior-consulting-agents@senior-consulting-agents</pre><button class="copy">Copy</button></div>
-          </div>
-          <div>
-            <div class="step-label">3 · Run an engagement</div>
-            <div class="code"><pre><span class="p">&gt; </span>/engage Canadian SaaS company (ARR $40M) preparing for US IPO: revenue recognition, SOX readiness and Pillar Two exposure</pre><button class="copy">Copy</button></div>
-          </div>
-        </div>
-        <div class="aside">
-          <h3>The full experience</h3>
-          <ul>
-            <li>54 real subagents that can work in parallel</li>
-            <li>11 slash commands like <code>/engage</code> and <code>/review</code></li>
-            <li>2 skills: the router and the house style</li>
-          </ul>
-          <p style="margin:12px 0 0">Working from a clone? <code>claude --plugin-dir ./senior-consulting-agents</code></p>
-        </div>
-      </div>
+    <!-- reconciled chip -->
+    <g class="drift d2">
+      <g transform="translate(78 230)">
+        <rect width="150" height="64" rx="14" fill="#0b121a" stroke="#6fd3d0" stroke-opacity=".55"/>
+        <rect x="14" y="16" width="52" height="7" rx="3.5" fill="#f2ecdc" fill-opacity=".45"/>
+        <rect x="14" y="34" width="86" height="12" rx="6" fill="#6fd3d0" fill-opacity=".85"/>
+        <circle cx="122" cy="32" r="12" fill="none" stroke="#c6ff3d" stroke-width="2"/>
+        <path d="M116 32l4.5 4.5L128 28" fill="none" stroke="#c6ff3d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </g>
+    <!-- sparkles -->
+    <g fill="#f2ecdc"><circle cx="64" cy="86" r="1.6" opacity=".6"/><circle cx="118" cy="140" r="1.2" opacity=".4"/><circle cx="590" cy="60" r="1.6" opacity=".5"/><circle cx="566" cy="334" r="1.3" opacity=".4"/><circle cx="40" cy="330" r="1.4" opacity=".4"/></g>
+    <rect width="640" height="400" fill="url(#r-noise)" opacity=".035"/>
+  </g>
+</svg></div></div>
+          <div class="tag-row">Workflow <b>/</b> management-report</div>
+          <h3>Management reporting</h3>
+          <p>Actuals, budget and cash movements in. A reconciled report out, with unexplained differences kept visible.</p>
+          <ul><li>Variance analysis and decision summary</li><li>Reconciliation exceptions</li><li>Action tracker with proposed owners</li></ul>
+          <div class="cmd-chip"><code>/senior-consulting-agents:management-report</code><button class="copy" type="button" aria-label="Copy management-report command">Copy</button></div>
+        </article>
+        <article class="fcard rv" style="--i:1">
+          <div class="tilt-wrap"><div class="thumb tilt" data-art><svg viewBox="0 0 640 400" role="img" aria-label="Illustration: a protective shield surrounded by connected supplier nodes" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="s-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1820"/><stop offset="1" stop-color="#05070a"/></linearGradient>
+    <radialGradient id="s-glow" cx="50%" cy="51%" r="46%"><stop offset="0" stop-color="#6fd3d0" stop-opacity=".3"/><stop offset=".5" stop-color="#c6ff3d" stop-opacity=".07"/><stop offset="1" stop-color="#05070a" stop-opacity="0"/></radialGradient>
+    <linearGradient id="s-shield" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1d3a44"/><stop offset=".5" stop-color="#0f222b"/><stop offset="1" stop-color="#081017"/></linearGradient>
+    <linearGradient id="s-shield-i" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2ecdc" stop-opacity=".22"/><stop offset=".45" stop-color="#f2ecdc" stop-opacity=".02"/><stop offset="1" stop-color="#c6ff3d" stop-opacity=".12"/></linearGradient>
+    <linearGradient id="s-rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eaffa8"/><stop offset=".5" stop-color="#c6ff3d"/><stop offset="1" stop-color="#6fd3d0"/></linearGradient>
+    <linearGradient id="s-link" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6fd3d0" stop-opacity=".1"/><stop offset="1" stop-color="#6fd3d0" stop-opacity=".7"/></linearGradient>
+    <pattern id="s-grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#f2ecdc" stroke-opacity=".045"/></pattern>
+    <filter id="s-blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="9"/></filter>
+    <filter id="s-soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="3.5"/></filter>
+    <filter id="s-noise" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="9"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 .95  0 0 0 0 .85  0 0 0 .55 0"/></filter>
+  </defs>
+  <rect width="640" height="400" fill="url(#s-bg)"/>
+  <rect width="640" height="400" fill="url(#s-grid)"/>
+  <rect width="640" height="400" fill="url(#s-glow)"/>
 
-      <div class="panel" role="tabpanel" id="p-gemini" aria-labelledby="t-gemini" hidden>
-        <div class="steps">
-          <div>
-            <div class="step-label">Install as a Gemini CLI extension</div>
-            <div class="code"><pre><span class="p">$ </span>gemini extensions install https://github.com/Lameda12/senior-consulting-agents</pre><button class="copy">Copy</button></div>
-          </div>
-          <div>
-            <div class="step-label">Then ask</div>
-            <div class="code"><pre>Run a cyber maturity assessment for a mid-size credit union</pre><button class="copy">Copy</button></div>
-          </div>
-        </div>
-        <div class="aside">
-          <h3>What you get</h3>
-          <p style="margin:0">The extension ships the skills plus a <code>GEMINI.md</code> context file, so Gemini knows which persona to load for each request.</p>
-        </div>
-      </div>
+  <!-- rings -->
+  <g fill="none" stroke="#f2ecdc">
+    <circle cx="320" cy="205" r="92" stroke-opacity=".12"/>
+    <circle cx="320" cy="205" r="140" stroke-opacity=".1" stroke-dasharray="2 7"/>
+    <circle cx="320" cy="205" r="178" stroke-opacity=".07"/>
+  </g>
 
-      <div class="panel" role="tabpanel" id="p-manual" aria-labelledby="t-manual" hidden>
-        <div class="steps">
-          <div>
-            <div class="step-label">Clone and copy the two skill folders</div>
-            <div class="code"><pre><span class="p">$ </span>git clone https://github.com/Lameda12/senior-consulting-agents
-<span class="p">$ </span>cp -r senior-consulting-agents/skills/* ~/.claude/skills/</pre><button class="copy">Copy</button></div>
-          </div>
-        </div>
-        <div class="aside">
-          <h3>Skills directory per tool</h3>
-          <table>
-            <tr><td>Claude Code</td><td><code>~/.claude/skills/</code></td></tr>
-            <tr><td>Codex CLI</td><td><code>~/.codex/skills/</code> or <code>.agents/skills/</code></td></tr>
-            <tr><td>Gemini CLI</td><td><code>~/.gemini/skills/</code></td></tr>
-            <tr><td>OpenCode</td><td><code>~/.config/opencode/skills/</code></td></tr>
-          </table>
-        </div>
-      </div>
+  <!-- supplier network (slow orbit) -->
+  <g class="orbit">
+    <g stroke-linecap="round" fill="none">
+      <path d="M320 205 L458 168" stroke="#6fd3d0" stroke-opacity=".55" stroke-width="1.6"/>
+      <path d="M320 205 L422 305" stroke="#6fd3d0" stroke-opacity=".5" stroke-width="1.6"/>
+      <path d="M320 205 L196 296" stroke="#6fd3d0" stroke-opacity=".45" stroke-width="1.6"/>
+      <path d="M320 205 L170 150" stroke="#6fd3d0" stroke-opacity=".45" stroke-width="1.6"/>
+      <path d="M320 205 L292 62" stroke="#c6ff3d" stroke-opacity=".75" stroke-width="3.4"/>
+      <path d="M320 205 L368 346" stroke="#f2ecdc" stroke-opacity=".38" stroke-width="1.4" stroke-dasharray="3 6" class="dash-flow"/>
+      <path d="M458 168 L492 262" stroke="#f2ecdc" stroke-opacity=".14"/>
+      <path d="M170 150 L196 296" stroke="#f2ecdc" stroke-opacity=".12"/>
+      <path d="M422 305 L368 346" stroke="#f2ecdc" stroke-opacity=".12"/>
+      <path d="M292 62 L170 150" stroke="#f2ecdc" stroke-opacity=".12"/>
+    </g>
+    <!-- nodes -->
+    <g>
+      <circle cx="458" cy="168" r="16" fill="#6fd3d0" opacity=".16"/><circle cx="458" cy="168" r="8" fill="#0b141b" stroke="#6fd3d0" stroke-width="2"/>
+      <circle cx="422" cy="305" r="16" fill="#6fd3d0" opacity=".16"/><circle cx="422" cy="305" r="8" fill="#0b141b" stroke="#6fd3d0" stroke-width="2"/>
+      <circle cx="196" cy="296" r="16" fill="#6fd3d0" opacity=".16"/><circle cx="196" cy="296" r="8" fill="#0b141b" stroke="#6fd3d0" stroke-width="2"/>
+      <circle cx="170" cy="150" r="16" fill="#6fd3d0" opacity=".16"/><circle cx="170" cy="150" r="8" fill="#0b141b" stroke="#6fd3d0" stroke-width="2"/>
+      <circle cx="492" cy="262" r="6" fill="#0b141b" stroke="#f2ecdc" stroke-opacity=".45" stroke-width="1.5"/>
+      <!-- concentration node: the one everything depends on -->
+      <circle cx="292" cy="62" r="30" fill="#c6ff3d" opacity=".22" filter="url(#s-soft)"/>
+      <circle cx="292" cy="62" r="15" fill="#10200a" stroke="url(#s-rim)" stroke-width="3"/>
+      <circle cx="292" cy="62" r="5.5" fill="#c6ff3d"/>
+      <!-- evidence gap node -->
+      <circle cx="368" cy="346" r="11" fill="none" stroke="#f2ecdc" stroke-opacity=".7" stroke-width="2" stroke-dasharray="3 3.5"/>
+      <circle cx="368" cy="346" r="3" fill="#f2ecdc" fill-opacity=".7"/>
+    </g>
+  </g>
 
-      <div class="panel" role="tabpanel" id="p-chat" aria-labelledby="t-chat" hidden>
-        <div class="steps">
-          <div>
-            <div class="step-label">Grab any persona as a system prompt</div>
-            <div class="code"><pre><span class="p">$ </span>curl -sL https://raw.githubusercontent.com/Lameda12/senior-consulting-agents/main/skills/senior-consulting-agents/references/agents/strategy-director.md</pre><button class="copy">Copy</button></div>
-          </div>
-          <div>
-            <div class="step-label">Optional: append the house style</div>
-            <div class="code"><pre><span class="p">$ </span>curl -sL https://raw.githubusercontent.com/Lameda12/senior-consulting-agents/main/skills/senior-consulting-agents/references/deliverable-standards.md</pre><button class="copy">Copy</button></div>
-          </div>
-        </div>
-        <div class="aside">
-          <h3>For models without a skills system</h3>
-          <p style="margin:0">DeepSeek, Llama, Nemotron, local models in Ollama or LM Studio, or any chat UI. Paste the persona file as the system prompt. Swap <code>strategy-director</code> for any id in the <a href="#agents">agent list</a>.</p>
-        </div>
+  <!-- shield -->
+  <g class="drift">
+    <ellipse cx="320" cy="354" rx="86" ry="14" fill="#000" opacity=".5" filter="url(#s-blur)"/>
+    <path d="M320 78 L420 116 V208 C420 268 378 312 320 338 C262 312 220 268 220 208 V116 Z" fill="#c6ff3d" opacity=".18" filter="url(#s-blur)"/>
+    <path d="M320 78 L420 116 V208 C420 268 378 312 320 338 C262 312 220 268 220 208 V116 Z" fill="url(#s-shield)" stroke="url(#s-rim)" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M320 96 L404 128 V208 C404 258 369 296 320 319 C271 296 236 258 236 208 V128 Z" fill="url(#s-shield-i)" stroke="#f2ecdc" stroke-opacity=".22"/>
+    <path d="M320 78 V338" stroke="#f2ecdc" stroke-opacity=".1"/>
+    <path d="M320 78 L420 116 V150 C390 134 352 128 320 132 C288 128 250 134 220 150 V116 Z" fill="#f2ecdc" opacity=".08"/>
+    <path pathLength="1" class="draw" d="M276 206 L309 239 L367 169" fill="none" stroke="#c6ff3d" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" opacity=".35" filter="url(#s-soft)"/>
+    <path pathLength="1" class="draw" d="M276 206 L309 239 L367 169" fill="none" stroke="#eaffa8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g fill="#f2ecdc"><circle cx="70" cy="70" r="1.5" opacity=".5"/><circle cx="580" cy="90" r="1.6" opacity=".5"/><circle cx="560" cy="340" r="1.3" opacity=".4"/><circle cx="90" cy="340" r="1.4" opacity=".4"/><circle cx="130" cy="220" r="1.1" opacity=".35"/></g>
+  <rect width="640" height="400" fill="url(#s-noise)" opacity=".035"/>
+</svg></div></div>
+          <div class="tag-row">Workflow <b>/</b> supplier-risk</div>
+          <h3>Supplier risk</h3>
+          <p>Contracts, concentration and supplier evidence in. A conditional decision memo out, with what would change the call.</p>
+          <ul><li>Risk findings and evidence gaps</li><li>Continuity options</li><li>Conditions for a decision</li></ul>
+          <div class="cmd-chip"><code>/senior-consulting-agents:supplier-risk</code><button class="copy" type="button" aria-label="Copy supplier-risk command">Copy</button></div>
+        </article>
+        <article class="fcard rv" style="--i:2">
+          <div class="tilt-wrap"><div class="thumb tilt" data-art><svg viewBox="0 0 640 400" role="img" aria-label="Illustration: a sculptural document with requirement paths and approval checkpoints" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="p-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#101a14"/><stop offset=".55" stop-color="#080d11"/><stop offset="1" stop-color="#05070a"/></linearGradient>
+    <radialGradient id="p-glow" cx="47%" cy="50%" r="46%"><stop offset="0" stop-color="#c6ff3d" stop-opacity=".2"/><stop offset=".6" stop-color="#6fd3d0" stop-opacity=".05"/><stop offset="1" stop-color="#05070a" stop-opacity="0"/></radialGradient>
+    <linearGradient id="p-sheet" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6f0df"/><stop offset=".55" stop-color="#d9d3c0"/><stop offset="1" stop-color="#9aa39b"/></linearGradient>
+    <linearGradient id="p-side" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1c2b2a"/><stop offset="1" stop-color="#0b1112"/></linearGradient>
+    <linearGradient id="p-path" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6fd3d0" stop-opacity=".15"/><stop offset="1" stop-color="#c6ff3d" stop-opacity=".95"/></linearGradient>
+    <linearGradient id="p-path2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c6ff3d" stop-opacity=".95"/><stop offset="1" stop-color="#6fd3d0" stop-opacity=".35"/></linearGradient>
+    <pattern id="p-grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#f2ecdc" stroke-opacity=".045"/></pattern>
+    <filter id="p-blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="9"/></filter>
+    <filter id="p-soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="3.5"/></filter>
+    <filter id="p-noise" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="2"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 .95  0 0 0 0 .85  0 0 0 .55 0"/></filter>
+  </defs>
+  <rect width="640" height="400" fill="url(#p-bg)"/>
+  <rect width="640" height="400" fill="url(#p-grid)"/>
+  <rect width="640" height="400" fill="url(#p-glow)"/>
+
+  <!-- requirement paths (in) -->
+  <g fill="none" stroke-linecap="round">
+    <path class="dash-flow" d="M64 92 C150 92 190 140 262 160" stroke="url(#p-path)" stroke-width="2.2"/>
+    <path class="dash-flow" d="M64 200 C140 200 190 200 262 202" stroke="url(#p-path)" stroke-width="2.2"/>
+    <path class="dash-flow" d="M64 308 C150 308 190 262 262 244" stroke="url(#p-path)" stroke-width="2.2"/>
+  </g>
+  <g>
+    <g transform="translate(40 68)"><rect width="48" height="48" rx="12" fill="#0b141b" stroke="#6fd3d0" stroke-opacity=".7"/><rect x="12" y="15" width="24" height="5" rx="2.5" fill="#6fd3d0"/><rect x="12" y="25" width="16" height="4" rx="2" fill="#f2ecdc" fill-opacity=".45"/></g>
+    <g transform="translate(40 176)"><rect width="48" height="48" rx="12" fill="#0b141b" stroke="#6fd3d0" stroke-opacity=".7"/><rect x="12" y="15" width="24" height="5" rx="2.5" fill="#6fd3d0"/><rect x="12" y="25" width="20" height="4" rx="2" fill="#f2ecdc" fill-opacity=".45"/></g>
+    <g transform="translate(40 284)"><rect width="48" height="48" rx="12" fill="#0b141b" stroke="#6fd3d0" stroke-opacity=".7"/><rect x="12" y="15" width="24" height="5" rx="2.5" fill="#6fd3d0"/><rect x="12" y="25" width="12" height="4" rx="2" fill="#f2ecdc" fill-opacity=".45"/></g>
+  </g>
+
+  <!-- approval path (out) -->
+  <g fill="none" stroke-linecap="round">
+    <path class="dash-flow" d="M392 202 C440 202 450 130 500 130 S560 202 590 202" stroke="url(#p-path2)" stroke-width="2.4"/>
+  </g>
+  <!-- checkpoints -->
+  <g>
+    <g class="blink"><circle cx="446" cy="152" r="20" fill="#c6ff3d" opacity=".22" filter="url(#p-soft)"/></g>
+    <circle cx="446" cy="152" r="14" fill="#10200a" stroke="#c6ff3d" stroke-width="2.4"/>
+    <path d="M439 152l5 5 9-10" fill="none" stroke="#eaffa8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="518" cy="130" r="14" fill="#10200a" stroke="#c6ff3d" stroke-width="2.4"/>
+    <path d="M511 130l5 5 9-10" fill="none" stroke="#eaffa8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="590" cy="202" r="15" fill="none" stroke="#f2ecdc" stroke-opacity=".7" stroke-width="2" stroke-dasharray="3 3.5"/>
+    <circle cx="590" cy="202" r="3.5" fill="#f2ecdc" fill-opacity=".7"/>
+  </g>
+
+  <!-- sculptural document -->
+  <g class="drift">
+    <ellipse cx="322" cy="364" rx="104" ry="14" fill="#000" opacity=".55" filter="url(#p-blur)"/>
+    <!-- back layers -->
+    <g transform="translate(262 52)">
+      <path d="M26 6 L142 -2 L152 296 L34 306 Z" fill="url(#p-side)" stroke="#f2ecdc" stroke-opacity=".16"/>
+    </g>
+    <g transform="translate(262 52)">
+      <path d="M14 14 L130 6 L140 304 L22 314 Z" fill="url(#p-side)" stroke="#f2ecdc" stroke-opacity=".22"/>
+    </g>
+    <!-- front sheet -->
+    <g transform="translate(262 46)">
+      <path d="M0 22 Q0 8 14 7 L98 2 L132 38 V300 Q132 314 118 315 L16 322 Q2 323 2 309 Z" fill="#c6ff3d" opacity=".16" filter="url(#p-blur)"/>
+      <path d="M2 22 Q2 10 15 9 L98 4 L130 38 L130 300 Q130 312 118 313 L16 320 Q4 321 4 309 Z" fill="url(#p-sheet)" stroke="#fff" stroke-opacity=".5"/>
+      <path d="M98 4 L98 30 Q98 38 106 38 L130 38 Z" fill="#a9b2a5" stroke="#fff" stroke-opacity=".35"/>
+      <rect x="2" y="9" width="128" height="305" fill="url(#p-noise)" opacity=".06"/>
+      <!-- content blocks -->
+      <rect x="22" y="40" width="54" height="9" rx="4.5" fill="#05070a" fill-opacity=".72"/>
+      <g fill="#05070a" fill-opacity=".22"><rect x="22" y="62" width="90" height="5" rx="2.5"/><rect x="22" y="74" width="78" height="5" rx="2.5"/></g>
+      <!-- requirement matrix -->
+      <g transform="translate(22 100)">
+        <rect width="92" height="64" rx="7" fill="#05070a" fill-opacity=".1" stroke="#05070a" stroke-opacity=".28"/>
+        <path d="M0 21H92M0 42H92M30 0V64" stroke="#05070a" stroke-opacity=".25"/>
+        <circle cx="15" cy="10.5" r="4.2" fill="#2f6f12"/><circle cx="15" cy="31.5" r="4.2" fill="#2f6f12"/><circle cx="15" cy="52.5" r="4.2" fill="none" stroke="#05070a" stroke-opacity=".6" stroke-dasharray="2 2"/>
+        <rect x="40" y="8" width="40" height="5" rx="2.5" fill="#05070a" fill-opacity=".4"/><rect x="40" y="29" width="30" height="5" rx="2.5" fill="#05070a" fill-opacity=".4"/><rect x="40" y="50" width="36" height="5" rx="2.5" fill="#05070a" fill-opacity=".4"/>
+      </g>
+      <!-- fee bars -->
+      <g transform="translate(22 184)" fill="#05070a">
+        <rect width="14" height="42" rx="3" fill-opacity=".55"/><rect x="22" y="12" width="14" height="30" rx="3" fill-opacity=".38"/><rect x="44" y="22" width="14" height="20" rx="3" fill-opacity=".25"/>
+        <rect x="68" y="6" width="24" height="36" rx="4" fill="#4c9a10" fill-opacity=".85"/>
+      </g>
+      <g fill="#05070a" fill-opacity=".2"><rect x="22" y="246" width="90" height="5" rx="2.5"/><rect x="22" y="258" width="64" height="5" rx="2.5"/><rect x="22" y="270" width="78" height="5" rx="2.5"/></g>
+      <!-- seal -->
+      <g transform="translate(96 288)"><circle r="12" fill="#05070a" fill-opacity=".85"/><path d="M-5 0l3.8 3.8L5-3.5" fill="none" stroke="#c6ff3d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+    </g>
+    <!-- rim light -->
+    <path d="M266 55 L360 50 L392 84" fill="none" stroke="#eaffa8" stroke-opacity=".8" stroke-width="1.4"/>
+  </g>
+
+  <!-- nodes where paths land -->
+  <g fill="#c6ff3d"><circle cx="262" cy="160" r="4.5"/><circle cx="262" cy="202" r="4.5"/><circle cx="262" cy="244" r="4.5"/></g>
+  <g fill="#f2ecdc"><circle cx="560" cy="70" r="1.6" opacity=".5"/><circle cx="600" cy="320" r="1.4" opacity=".4"/><circle cx="170" cy="48" r="1.4" opacity=".4"/><circle cx="210" cy="360" r="1.5" opacity=".4"/></g>
+  <rect width="640" height="400" fill="url(#p-noise)" opacity=".035"/>
+</svg></div></div>
+          <div class="tag-row">Workflow <b>/</b> proposal</div>
+          <h3>Proposals</h3>
+          <p>Buyer requirements, scope, effort and rates in. A requirement-mapped proposal out, with unresolved commitments called out.</p>
+          <ul><li>Requirement matrix</li><li>Reconciled fee calculation</li><li>Options when the offer cannot be executed</li></ul>
+          <div class="cmd-chip"><code>/senior-consulting-agents:proposal</code><button class="copy" type="button" aria-label="Copy proposal command">Copy</button></div>
+        </article>
       </div>
     </div>
   </section>
 
-  <section id="how">
+  <!-- 3 · EXAMPLE -->
+  <section class="sec" id="example" aria-labelledby="h-ex">
     <div class="wrap">
       <div class="sec-head">
-        <div><div class="num">02 / HOW IT WORKS</div><h2>Structured problem-solving, minus the billable hours.</h2></div>
-        <p>A router skill indexes every persona and workflow, then loads only the 1-3 files a request actually needs. Your context window stays small. The arguing stays efficient.</p>
+        <div class="rv"><div class="kicker">02 · From evidence to draft</div><h2 id="h-ex">Supplied numbers in. An exception you can act on out.</h2></div>
+        <p class="rv" style="--i:1">The starter prompt in the Firmcraft README gives a 40-person distributor's October figures. A useful report keeps the cash gap visible instead of inventing a balancing item.</p>
       </div>
-      <div class="how">
-        <div><b>1</b><h3>Route</h3><p>Your request is matched to a workflow: audit plan, tax memo, due diligence, valuation and more.</p></div>
-        <div><b>2</b><h3>Staff</h3><p>The best 1-3 senior personas are pulled in by practice, jurisdiction and topic.</p></div>
-        <div><b>3</b><h3>Argue</h3><p>Each persona applies its own frameworks. Subagent-capable tools run them in parallel.</p></div>
-        <div><b>4</b><h3>Deliver</h3><p>One consolidated, partner-reviewed-style deliverable in a consistent house style.</p></div>
+      <div class="ex">
+        <div class="doc rv">
+          <div class="doc-h"><i></i>Supplied<span>CAD thousands</span></div>
+          <div class="doc-b">
+            <table class="tbl">
+              <caption>Finance table</caption>
+              <thead><tr><th scope="col">Metric</th><th class="n" scope="col">Actual</th><th class="n" scope="col">Budget</th></tr></thead>
+              <tbody>
+                <tr><td>Revenue</td><td class="n">120</td><td class="n">100</td></tr>
+                <tr><td>Operating costs</td><td class="n">90</td><td class="n">80</td></tr>
+                <tr><td>Operating profit</td><td class="n">30</td><td class="n">20</td></tr>
+              </tbody>
+            </table>
+            <table class="tbl">
+              <caption>Cash table</caption>
+              <tbody>
+                <tr><td>Opening cash</td><td class="n">40</td></tr>
+                <tr><td>Net cash movement</td><td class="n">−15</td></tr>
+                <tr><td>Reported closing cash</td><td class="n">30</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="link-col" aria-hidden="true">
+          <svg viewBox="0 0 72 300" preserveAspectRatio="none"><path class="dash-flow" d="M4 150 H68" stroke="#c6ff3d" stroke-width="2" fill="none" vector-effect="non-scaling-stroke"/><path d="M60 142l9 8-9 8" fill="none" stroke="#c6ff3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>
+        </div>
+        <div class="doc out rv" style="--i:2">
+          <div class="doc-h"><i></i>Draft output<span>for qualified review</span></div>
+          <div class="doc-b">
+            <table class="tbl">
+              <caption>Variance to budget</caption>
+              <thead><tr><th scope="col">Metric</th><th class="n" scope="col">Variance</th></tr></thead>
+              <tbody>
+                <tr><td>Revenue</td><td class="n pos">+20</td></tr>
+                <tr><td>Operating costs</td><td class="n">+10</td></tr>
+                <tr><td>Operating profit</td><td class="n pos">+10</td></tr>
+                <tr class="warn"><td>Cash: expected 25, reported 30</td><td class="n">5 unexplained</td></tr>
+              </tbody>
+            </table>
+            <div class="flag"><b>Evidence gap</b>No cause for the 5 difference is in the supplied files, so none is assumed. The report lists what is needed to close it.</div>
+            <ol class="acts" aria-label="Prioritized actions with proposed owners">
+              <li><div>Obtain ledger or bank support for the cash difference<span>Proposed owner: finance lead</span></div></li>
+              <li><div>Confirm what drove costs above budget, without assuming a cause<span>Proposed owner: department head</span></div></li>
+              <li><div>Agree the metric definitions the next report will use<span>Proposed owner: owner and finance lead</span></div></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <p class="ill">Illustrative: synthetic figures from the README's quick start, not a customer result. Your assistant's actual output will vary.</p>
+    </div>
+  </section>
+
+  <!-- 4 · HOW IT WORKS -->
+  <section class="sec" id="how" aria-labelledby="h-how">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="rv"><div class="kicker">03 · How it works</div><h2 id="h-how">A router, one lead, specialists only when they matter.</h2></div>
+        <p class="rv" style="--i:1">Firmcraft is a set of instructions your assistant reads, not a hosted service. It loads only what a request needs.</p>
+      </div>
+      <div class="steps">
+        <div class="step rv"><h3>Route the job</h3><p>A known workflow loads its lead persona directly. Other requests use the relevant practice index.</p></div>
+        <div class="step rv" style="--i:1"><h3>Set the scope</h3><p>Uses available company context, names the decisive gaps and picks a depth: brief, standard or deep.</p></div>
+        <div class="step rv" style="--i:2"><h3>Analyze the evidence</h3><p>Findings link to source locations, calculations and criteria. Assumptions and contradictions stay visible.</p></div>
+        <div class="step rv"><h3>Bring in specialists</h3><p>Extra personas answer bounded, material questions. Separate agent runs depend on your host tool.</p></div>
+        <div class="step rv" style="--i:1"><h3>Deliver once</h3><p>The lead consolidates one artifact with actions and the evidence that would show each is done.</p></div>
+        <div class="step rv" style="--i:2"><h3>Review and update</h3><p>Technical soundness and request fulfillment are judged separately. Follow-ups keep finding IDs.</p></div>
+      </div>
+      <div class="status3">
+        <div class="st pass rv"><b><i></i>Pass</b><p>The assessed axis meets the stated criteria within the evidence and scope used.</p></div>
+        <div class="st prov rv" style="--i:1"><b><i></i>Provisional</b><p>Useful work exists, but named assumptions, gaps or verification remain.</p></div>
+        <div class="st blk rv" style="--i:2"><b><i></i>Blocked</b><p>A missing fact or conflicting requirement prevents the requested conclusion.</p></div>
+      </div>
+      <p class="caveat">These are instructions for the model, not a deterministic workflow engine. There is no ERP connector, document editor or hosted portal. Outputs are AI drafts and never replace professional sign-off.</p>
+    </div>
+  </section>
+
+  <!-- 5 · LIBRARY -->
+  <section class="sec" id="library" aria-labelledby="h-lib">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="rv"><div class="kicker">04 · Library</div><h2 id="h-lib">Search 13 workflows and 54 personas.</h2></div>
+        <p class="rv" style="--i:1">You pick the work; the lead persona comes with it. Select a card to copy its command or id.</p>
+      </div>
+      <div class="lib-bar rv">
+        <div class="seg" role="tablist" aria-label="Library view">
+          <button type="button" role="tab" id="lt-wf" aria-selected="true" aria-controls="lib-panel" data-view="wf">Workflows<em>13</em></button>
+          <button type="button" role="tab" id="lt-ps" aria-selected="false" aria-controls="lib-panel" tabindex="-1" data-view="ps">Personas<em>54</em></button>
+        </div>
+        <div class="search-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <label class="sr" for="q">Search the library</label>
+          <input class="search" id="q" type="search" placeholder="Search: supplier, IFRS, cyber, proposal…" autocomplete="off" spellcheck="false">
+        </div>
+      </div>
+      <div class="chips rv" id="chips" role="group" aria-label="Filter personas by practice"></div>
+      <p class="count" id="count" role="status" aria-live="polite"></p>
+      <div class="grid" id="lib-panel" role="tabpanel" aria-labelledby="lt-wf" tabindex="0"></div>
+      <p class="hint-line">In Claude Code, workflows run as <code>/senior-consulting-agents:&lt;workflow&gt;</code>. In other assistants, name the workflow in your request. Seven <em>Sector context</em> personas add industry knowledge when it changes the analysis.</p>
+    </div>
+  </section>
+
+  <!-- 6 · INSTALL -->
+  <section class="sec" id="install" aria-labelledby="h-in">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="rv"><div class="kicker">05 · Install</div><h2 id="h-in">Pick your assistant. Paste a few lines.</h2></div>
+        <p class="rv" style="--i:1">No account or API key for Firmcraft itself. An assistant that can read the installed files is required; a plain chat window does not gain these capabilities.</p>
+      </div>
+      <div class="tabs rv" role="tablist" aria-label="Install route">
+        <button class="tab" type="button" role="tab" id="t-claude" aria-selected="true" aria-controls="p-claude">Claude Code</button>
+        <button class="tab" type="button" role="tab" id="t-cli" aria-selected="false" aria-controls="p-cli" tabindex="-1">Skills CLI</button>
+        <button class="tab" type="button" role="tab" id="t-codex" aria-selected="false" aria-controls="p-codex" tabindex="-1">Codex</button>
+        <button class="tab" type="button" role="tab" id="t-gemini" aria-selected="false" aria-controls="p-gemini" tabindex="-1">Gemini CLI</button>
+        <button class="tab" type="button" role="tab" id="t-other" aria-selected="false" aria-controls="p-other" tabindex="-1">No skills support</button>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-claude" aria-labelledby="t-claude" tabindex="0">
+        <div class="stack">
+          <div><div class="lab">1 · Add the marketplace, then install</div>
+            <div class="code"><pre><code>/plugin marketplace add Lameda12/Firmcraft-skill
+/plugin install senior-consulting-agents@senior-consulting-agents</code></pre><button class="copy" type="button" aria-label="Copy commands">Copy</button></div></div>
+          <div><div class="lab">2 · Try a workflow in a new session</div>
+            <div class="code"><pre><code>/senior-consulting-agents:management-report
+
+Prepare a brief October management report for a 40-person B2B distributor.
+Audience: owner and finance lead. All amounts are CAD thousands.
+
+Supplied finance table:
+Metric            Actual    Budget
+Revenue           120       100
+Operating costs    90        80
+Operating profit   30        20
+
+Supplied cash table:
+Opening cash: 40
+Net cash movement: -15
+Reported closing cash: 30
+
+Calculate the variances and reconcile cash. Do not invent causes for
+unexplained movements. Return a decision summary, editable tables,
+evidence gaps and three prioritized actions with proposed owners.
+Use only these supplied figures; mark missing context explicitly.</code></pre><button class="copy" type="button" aria-label="Copy starter prompt">Copy</button></div></div>
+        </div>
+        <div class="aside"><h3>What the plugin packages</h3><ul><li>54 specialist personas</li><li>13 workflow commands</li><li>Both portable skills</li></ul><p>Reload plugins or open a new session after installing. Trying local changes? Run <code>claude --plugin-dir .</code> from a checkout.</p></div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-cli" aria-labelledby="t-cli" tabindex="0" hidden>
+        <div class="stack">
+          <div><div class="lab">Run in your terminal</div>
+            <div class="code"><pre><code>npx skills add Lameda12/Firmcraft-skill</code></pre><button class="copy" type="button" aria-label="Copy command">Copy</button></div></div>
+          <div><div class="lab">Then ask your assistant</div>
+            <div class="code wrap"><pre><code>Use the senior-consulting-agents skill and its supplier-risk workflow. We are a 25-person B2B distributor deciding whether to keep ordering from a packaging supplier that supports 70% of shipments. Use brief mode. Keep missing and contradictory evidence visible, and do not approve the supplier on our behalf.</code></pre><button class="copy" type="button" aria-label="Copy prompt">Copy</button></div></div>
+        </div>
+        <div class="aside"><h3>Choose both skills</h3><p>Select <code>senior-consulting-agents</code> and <code>consulting-deliverable-standards</code>, then your assistant.</p><p>The portable route ships workflows as reference files. It does not register the 13 slash commands in other assistants. Needs Node.js for <code>npx</code>.</p></div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-codex" aria-labelledby="t-codex" tabindex="0" hidden>
+        <div class="stack">
+          <div><div class="lab">1 · Copy both skill folders from a checkout (macOS/Linux)</div>
+            <div class="code"><pre><code>git clone https://github.com/Lameda12/Firmcraft-skill
+cd Firmcraft-skill
+mkdir -p "$HOME/.agents/skills"
+cp -R skills/senior-consulting-agents "$HOME/.agents/skills/"
+cp -R skills/consulting-deliverable-standards "$HOME/.agents/skills/"</code></pre><button class="copy" type="button" aria-label="Copy commands">Copy</button></div></div>
+          <div><div class="lab">2 · In a new Codex session, select the skill with $</div>
+            <div class="code wrap"><pre><code>$senior-consulting-agents
+
+Use the management-report workflow in brief mode for a 40-person B2B distributor. Audience: owner and finance lead. Period: October. All amounts are CAD thousands.</code></pre><button class="copy" type="button" aria-label="Copy prompt">Copy</button></div></div>
+        </div>
+        <div class="aside"><h3>Team-wide install</h3><p>Place both complete skill directories under <code>.agents/skills/</code> in the target project instead of your user directory. Keep all nested references, and avoid installing the same skill at several scopes.</p></div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-gemini" aria-labelledby="t-gemini" tabindex="0" hidden>
+        <div class="stack">
+          <div><div class="lab">Install the repository as a Gemini CLI extension</div>
+            <div class="code"><pre><code>gemini extensions install https://github.com/Lameda12/Firmcraft-skill</code></pre><button class="copy" type="button" aria-label="Copy command">Copy</button></div></div>
+        </div>
+        <div class="aside"><h3>What the repo provides</h3><p>The repository includes <code>gemini-extension.json</code> and a <code>GEMINI.md</code> context file that points Gemini to the router skill. Features and invocation differ by host, and this route has not been tested end to end for this page.</p></div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-other" aria-labelledby="t-other" tabindex="0" hidden>
+        <div class="stack">
+          <div><div class="lab">Put these files in the model's context</div>
+            <div class="code"><pre><code>skills/senior-consulting-agents/references/agents/&lt;persona&gt;.md
+skills/senior-consulting-agents/references/deliverable-standards.md
+skills/senior-consulting-agents/references/engagement-method.md
+skills/senior-consulting-agents/references/workflows/&lt;workflow&gt;.md</code></pre><button class="copy" type="button" aria-label="Copy file list">Copy</button></div></div>
+        </div>
+        <div class="aside"><h3>For models without a skills system</h3><p>Paste the actual file contents, not just paths, then add your request and evidence. Calculations and verification still depend on the tools that model has.</p></div>
+      </div>
+
+      <div class="aside name-note rv">
+        <h3>A note on names</h3>
+        <p style="margin:0 0 6px">Firmcraft is the product name. The installed identifiers have not changed, so use these exactly. <code>/firmcraft:…</code> and <code>$firmcraft</code> are not registered.</p>
+        <table class="idt"><tbody>
+          <tr><td>Repository</td><td><code>Lameda12/Firmcraft-skill</code></td></tr>
+          <tr><td>Claude Code plugin and marketplace</td><td><code>senior-consulting-agents</code></td></tr>
+          <tr><td>Router skill</td><td><code>senior-consulting-agents</code></td></tr>
+          <tr><td>Shared standards skill</td><td><code>consulting-deliverable-standards</code></td></tr>
+        </tbody></table>
       </div>
     </div>
   </section>
 
-  <section id="commands">
+  <!-- 7 · FINAL CTA -->
+  <section class="sec final" aria-labelledby="h-fin" style="border-bottom:0">
     <div class="wrap">
-      <div class="sec-head">
-        <div><div class="num">03 / COMMANDS</div><h2>Eleven engagements, one slash away.</h2></div>
-        <p>Slash commands in the Claude Code plugin. In every other tool, just describe the task in plain words. Click any card to copy it.</p>
-      </div>
-      <div class="cmds" id="cmds"></div>
-    </div>
-  </section>
-
-  <section id="agents">
-    <div class="wrap">
-      <div class="sec-head">
-        <div><div class="num">04 / THE BENCH</div><h2>54 seniors. Zero juniors to blame.</h2></div>
-        <p>Managers, Senior Managers, Directors and Partners across every major practice. Click an agent to copy its id.</p>
-      </div>
-      <div class="filters">
-        <input class="search" id="q" type="search" placeholder="Search agents: tax, cyber, IFRS, M&amp;A..." aria-label="Search agents">
-        <div class="chips" id="chips"></div>
-      </div>
-      <div class="grid" id="grid"></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <div class="qa">
-        <div><q>Will this replace consultants?</q><strong>Probably not anytime soon.</strong></div>
-        <div><q>Will it give me another excuse to say I'm working on AI?</q><strong class="yes">Absolutely.</strong></div>
-      </div>
-      <div style="margin-top:40px; display:flex; gap:10px; flex-wrap:wrap">
-        <a class="btn primary" href="#install">Install the agents</a>
-        <a class="btn" href="https://github.com/Lameda12/senior-consulting-agents" target="_blank" rel="noopener">Star on GitHub</a>
+      <picture class="mini rv"><source srcset="assets/firmcraft-mascot.webp" type="image/webp"><img src="assets/firmcraft-mascot.png" width="132" height="131" loading="lazy" alt="Firmcraft beaver mascot"></picture>
+      <h2 id="h-fin" class="rv" style="--i:1">Careful craftsmanship. Checked evidence. Practical decisions.</h2>
+      <p class="rv" style="--i:2">Start with one workflow and one real brief. Review the draft the way you would review a colleague's.</p>
+      <div class="cta-row rv" style="--i:3">
+        <a class="btn primary" href="#install">Install Firmcraft
+          <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn" href="https://github.com/Lameda12/Firmcraft-skill" target="_blank" rel="noopener">View on GitHub</a>
       </div>
     </div>
   </section>
@@ -466,11 +1023,14 @@ Draft an audit planning memo for a Canadian SaaS company with $40M ARR</pre><but
 
 <footer>
   <div class="wrap">
-    <p style="margin:0">Unofficial. Not affiliated with, endorsed by, or representing any professional-services firm. Outputs are AI drafts and must be reviewed by qualified professionals. Built by Alamedin Sabit.</p>
+    <div>
+      <p>Unofficial. Firmcraft is not affiliated with, endorsed by or representing any professional-services firm. Outputs are AI drafts for qualified review and are not professional sign-off.</p>
+      <p>Built by Alamedin Sabit · MIT licensed</p>
+    </div>
     <div class="links">
-      <a href="https://github.com/Lameda12/senior-consulting-agents" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://github.com/Lameda12/senior-consulting-agents/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contribute</a>
-      <a href="https://github.com/Lameda12/senior-consulting-agents/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+      <a href="https://github.com/Lameda12/Firmcraft-skill" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/Lameda12/Firmcraft-skill/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contribute</a>
+      <a href="https://github.com/Lameda12/Firmcraft-skill/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
     </div>
   </div>
 </footer>
@@ -479,211 +1039,289 @@ Draft an audit planning memo for a Canadian SaaS company with $40M ARR</pre><but
 
 <script>
 (() => {
-  // theme
-  const root = document.documentElement;
-  try { const t = localStorage.getItem("sca-theme"); if (t) root.dataset.theme = t; } catch {}
-  document.getElementById("theme").addEventListener("click", () => {
-    const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
-    root.dataset.theme = dark ? "light" : "dark";
-    try { localStorage.setItem("sca-theme", root.dataset.theme); } catch {}
-  });
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  const finePointer = matchMedia("(hover: hover) and (pointer: fine)");
 
-  // copy
-  const toast = document.getElementById("toast");
+  /* ---------- toast + copy ---------- */
+  const toast = $("#toast");
   let toastTimer;
   const notify = msg => {
     toast.textContent = msg; toast.classList.add("show");
-    clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove("show"), 1600);
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove("show"), 1800);
   };
-  const copy = async (text, label = "Copied to clipboard") => {
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch {
+  const copy = async text => {
+    try { await navigator.clipboard.writeText(text); }
+    catch {
       const ta = Object.assign(document.createElement("textarea"), { value: text });
-      ta.style.cssText = "position:fixed;opacity:0";
+      ta.setAttribute("readonly", ""); ta.style.cssText = "position:fixed;opacity:0;top:0";
       document.body.append(ta); ta.select();
-      try { document.execCommand("copy"); } catch { notify("Copy failed, select the text manually"); ta.remove(); return false; }
+      let ok = false;
+      try { ok = document.execCommand("copy"); } catch {}
       ta.remove();
+      if (!ok) { notify("Copy failed. Select the text manually."); return false; }
     }
-    notify(label);
     return true;
   };
   const flash = btn => {
-    const old = btn.textContent; btn.textContent = "Copied"; btn.classList.add("ok");
-    setTimeout(() => { btn.textContent = old; btn.classList.remove("ok"); }, 1400);
+    const old = btn.dataset.label || (btn.dataset.label = btn.textContent);
+    btn.textContent = "Copied"; btn.classList.add("ok");
+    clearTimeout(btn._t);
+    btn._t = setTimeout(() => { btn.textContent = old; btn.classList.remove("ok"); }, 1400);
   };
-  // strip prompts and comments so pasted text runs as-is
-  const codeText = pre => [...pre.childNodes]
-    .filter(n => !(n.classList && (n.classList.contains("p") || n.classList.contains("c"))))
-    .map(n => n.textContent).join("").split("\n").map(l => l.trimEnd()).filter(Boolean).join("\n");
-
-  document.querySelectorAll(".code .copy").forEach(btn =>
-    btn.addEventListener("click", async () => { if (await copy(codeText(btn.previousElementSibling))) flash(btn); }));
-  document.querySelectorAll("[data-copy-target]").forEach(btn =>
-    btn.addEventListener("click", async () => { if (await copy(document.getElementById(btn.dataset.copyTarget).textContent)) flash(btn); }));
-
-  // tabs
-  const tabs = [...document.querySelectorAll(".tab")];
-  const select = tab => tabs.forEach(t => {
-    const on = t === tab;
-    t.setAttribute("aria-selected", on);
-    t.tabIndex = on ? 0 : -1;
-    document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+  document.addEventListener("click", async e => {
+    const btn = e.target.closest(".copy");
+    if (!btn) return;
+    const src = btn.dataset.copyTarget ? document.getElementById(btn.dataset.copyTarget)
+      : btn.previousElementSibling && btn.previousElementSibling.querySelector?.("code") || btn.previousElementSibling;
+    if (!src) return;
+    if (await copy(src.textContent.trim())) { flash(btn); notify("Copied to clipboard"); }
   });
-  tabs.forEach((t, i) => {
-    t.addEventListener("click", () => select(t));
-    t.addEventListener("keydown", e => {
-      const d = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
-      if (!d) return;
-      const next = tabs[(i + d + tabs.length) % tabs.length];
-      select(next); next.focus();
+
+  /* ---------- mobile nav ---------- */
+  const menuBtn = $("#menu-btn"), mnav = $("#mobile-nav");
+  const setMenu = open => { mnav.classList.toggle("open", open); menuBtn.setAttribute("aria-expanded", open); menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu"); };
+  menuBtn.addEventListener("click", () => setMenu(!mnav.classList.contains("open")));
+  mnav.addEventListener("click", e => { if (e.target.closest("a")) setMenu(false); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && mnav.classList.contains("open")) { setMenu(false); menuBtn.focus(); } });
+
+  /* ---------- active section in nav ---------- */
+  const links = $$(".nav-links a");
+  const secs = links.map(a => $(a.getAttribute("href"))).filter(Boolean);
+  if ("IntersectionObserver" in window) {
+    const so = new IntersectionObserver(es => es.forEach(en => {
+      if (en.isIntersecting) links.forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + en.target.id));
+    }), { rootMargin: "-45% 0px -50% 0px" });
+    secs.forEach(s => so.observe(s));
+  }
+
+  /* ---------- reveal on scroll ---------- */
+  const rv = $$(".rv");
+  if ("IntersectionObserver" in window && !reduced.matches) {
+    const ro = new IntersectionObserver(es => es.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add("in"); ro.unobserve(en.target); }
+    }), { rootMargin: "0px 0px -8% 0px", threshold: .08 });
+    rv.forEach(el => ro.observe(el));
+  } else rv.forEach(el => el.classList.add("in"));
+
+  /* ---------- pause art when offscreen / tab hidden ---------- */
+  const arts = $$("[data-art], #hero-art");
+  if ("IntersectionObserver" in window) {
+    const ao = new IntersectionObserver(es => es.forEach(en => {
+      en.target.classList.toggle("is-off", !en.isIntersecting);
+      if (en.isIntersecting) en.target.classList.add("in");
+    }), { threshold: 0 });
+    arts.forEach(a => { a.classList.add("is-off"); ao.observe(a); });
+  } else arts.forEach(a => a.classList.add("in"));
+
+  /* ---------- tilt on thumbnails (desktop pointer only) ---------- */
+  if (finePointer.matches && !reduced.matches) {
+    $$(".thumb.tilt").forEach(el => {
+      let raf = 0;
+      el.addEventListener("pointermove", e => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          el.classList.add("live");
+          el.style.setProperty("--ry", ((x - .5) * 10).toFixed(2) + "deg");
+          el.style.setProperty("--rx", ((.5 - y) * 8).toFixed(2) + "deg");
+          el.style.setProperty("--mx", (x * 100).toFixed(1) + "%");
+          el.style.setProperty("--my", (y * 100).toFixed(1) + "%");
+        });
+      });
+      el.addEventListener("pointerleave", () => {
+        cancelAnimationFrame(raf); el.classList.remove("live");
+        el.style.setProperty("--rx", "0deg"); el.style.setProperty("--ry", "0deg");
+      });
     });
-  });
-  select(tabs[0]);
+  }
 
-  // commands
-  const commands = [
-    ["engage", "Route a request to the best specialist agent(s) and run an engagement", "Canadian SaaS company (ARR $40M) preparing for US IPO"],
-    ["audit-plan", "Draft an audit planning memo", "FY26 audit of a mid-market manufacturer"],
-    ["tax-memo", "Draft a tax technical memo", "Pillar Two exposure for a Canadian group with an Irish sub"],
-    ["due-diligence", "Financial, tax and commercial due diligence outline", "buy-side DD on a $120M B2B SaaS target"],
-    ["valuation", "Valuation approach and model outline", "pre-Series C fintech, 409A and fair value"],
-    ["risk-assessment", "Risk and controls assessment", "procure-to-pay at a regional retailer"],
-    ["cyber-review", "Cyber maturity assessment", "NIST CSF 2.0 baseline for a credit union"],
-    ["proposal", "Write a winning proposal", "finance transformation RFP for a provincial agency"],
-    ["review", "Partner-level review of a document", "paste your draft memo here"],
-    ["esg", "ESG and sustainability readiness assessment", "ISSB / CSRD readiness for a mining company"],
-    ["interview-prep", "Big Four interview and career prep", "Senior Consultant, Risk Advisory, Toronto"],
-  ];
-  document.getElementById("cmds").innerHTML = commands.map(([c, d, ex]) =>
-    `<button class="cmd" data-cmd="/${c} ${ex}"><code>/${c}</code><span>${d}</span><small>e.g. ${ex}</small></button>`).join("");
-  document.querySelectorAll(".cmd").forEach(b => b.addEventListener("click", () => copy(b.dataset.cmd, `Copied /${b.dataset.cmd.split(" ")[0].slice(1)}`)));
-
-  // agents: [id, role, group]
-  const agents = [
-    ["audit-partner","Audit Engagement Partner","Audit"],
-    ["audit-senior-manager","Audit Senior Manager (External Audit)","Audit"],
-    ["financial-reporting-ifrs","IFRS Technical Accounting Director","Audit"],
-    ["us-gaap-sec-reporting","US GAAP & SEC Reporting Senior Manager","Audit"],
-    ["sox-icfr","SOX / ICFR Controls Director","Audit"],
-    ["it-audit-itgc","IT Audit / ITGC Senior Manager","Audit"],
-    ["forensic-data-analytics-audit","Audit Data & Analytics Lead","Audit"],
-    ["public-sector-audit","Government & Public Sector Audit Senior Manager","Audit"],
-    ["corporate-tax-partner","Corporate Tax Partner","Tax"],
-    ["international-tax","International Tax Senior Manager","Tax"],
-    ["transfer-pricing","Transfer Pricing Director","Tax"],
-    ["indirect-tax","Indirect Tax (VAT/GST/Sales Tax) Senior Manager","Tax"],
-    ["mergers-acquisitions-tax","M&A Tax Director","Tax"],
-    ["global-mobility-tax","Global Mobility Services Senior Manager","Tax"],
-    ["private-enterprise-tax","Private Enterprise & Family Office Tax Senior Manager","Tax"],
-    ["tax-technology","Tax Technology & Transformation Director","Tax"],
-    ["tax-controversy","Tax Controversy & Dispute Resolution Senior Manager","Tax"],
-    ["management-consulting-partner","Management Consulting Partner","Advisory"],
-    ["strategy-director","Strategy Director","Advisory"],
-    ["finance-transformation","Finance Transformation Senior Manager","Advisory"],
-    ["operations-supply-chain","Operations & Supply Chain Director","Advisory"],
-    ["people-change","People & Change Senior Manager","Advisory"],
-    ["customer-advisory","Customer & Digital Experience Director","Advisory"],
-    ["technology-consulting-architect","Technology Consulting Director / Enterprise Architect","Advisory"],
-    ["ai-data-analytics","AI & Data Analytics Director","Advisory"],
-    ["cyber-security","Cyber Security Director","Advisory"],
-    ["privacy-data-protection","Privacy & Data Protection Senior Manager","Advisory"],
-    ["internal-audit","Internal Audit Director (Outsourced/Co-sourced)","Risk"],
-    ["enterprise-risk","Enterprise Risk Management Senior Manager","Risk"],
-    ["regulatory-compliance-fs","Financial Services Regulatory Director","Risk"],
-    ["financial-risk-quant","Financial Risk & Quantitative Modeling Senior Manager","Risk"],
-    ["forensic-investigations","Forensic Investigations Director","Forensic"],
-    ["anti-financial-crime","Anti-Money Laundering & Sanctions Senior Manager","Forensic"],
-    ["dispute-expert-witness","Disputes & Expert Witness Director","Forensic"],
-    ["deal-advisory-partner","Deal Advisory (M&A) Partner","Deals"],
-    ["financial-due-diligence","Financial Due Diligence (Transaction Services) Director","Deals"],
-    ["valuations","Valuations Senior Manager","Deals"],
-    ["corporate-finance-modeling","Corporate Finance & Financial Modeling Director","Deals"],
-    ["restructuring","Restructuring & Turnaround Director","Deals"],
-    ["integration-separation","M&A Integration & Separation Senior Manager","Deals"],
-    ["infrastructure-advisory","Infrastructure & Project Finance Director","Deals"],
-    ["esg-assurance","ESG & Sustainability Assurance Director","ESG"],
-    ["esg-advisory","ESG Strategy & Decarbonisation Director","ESG"],
-    ["sector-financial-services","Financial Services Industry Leader","Sector"],
-    ["sector-energy-resources","Energy, Natural Resources & Chemicals Industry Leader","Sector"],
-    ["sector-healthcare-life-sciences","Healthcare & Life Sciences Industry Leader","Sector"],
-    ["sector-tmt","Technology, Media & Telecom Industry Leader","Sector"],
-    ["sector-government","Government & Public Sector Advisory Director","Sector"],
-    ["sector-consumer-retail","Consumer & Retail Industry Leader","Sector"],
-    ["sector-industrial-manufacturing","Industrial Manufacturing & Automotive Industry Leader","Sector"],
-    ["quality-risk-management","Risk Management & Professional Practice Partner","Firm"],
-    ["proposal-business-development","Pursuits & Business Development Director","Firm"],
-    ["engagement-project-manager","Engagement & PMO Director","Firm"],
-    ["learning-career-coach","Talent, Learning & Career Coach","Firm"],
-  ];
-  const groups = ["All", ...new Set(agents.map(a => a[2]))];
-  let group = "All", query = "";
-  const chips = document.getElementById("chips");
-  chips.innerHTML = groups.map(g => {
-    const n = g === "All" ? agents.length : agents.filter(a => a[2] === g).length;
-    return `<button class="chip" aria-pressed="${g === "All"}" data-g="${g}">${g}<em>${n}</em></button>`;
-  }).join("");
-  const grid = document.getElementById("grid");
-  const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
-  const render = () => {
-    const q = query.trim().toLowerCase();
-    const list = agents.filter(([id, role, g]) =>
-      (group === "All" || g === group) && (!q || `${id} ${role} ${g}`.toLowerCase().includes(q)));
-    grid.innerHTML = list.length
-      ? list.map(([id, role, g]) => `<button class="agent" data-id="${id}"><span class="tag">${g}</span><span class="role">${esc(role)}</span><code>${id}</code></button>`).join("")
-      : `<p class="empty">No agent for that yet. <a href="https://github.com/Lameda12/senior-consulting-agents/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contribute one?</a></p>`;
+  /* ---------- hero: parallax + aerodynamic flow field ---------- */
+  const hero = $("#hero-art"), cv = $("#flow");
+  const layers = $$(".layer", hero);
+  let heroVisible = true, px = 0, py = 0, tx = 0, ty = 0, scrollY0 = 0;
+  const applyParallax = () => {
+    px += (tx - px) * .08; py += (ty - py) * .08;
+    layers.forEach(l => {
+      const d = +l.dataset.depth || 0;
+      l.style.transform = `translate3d(${(px * d).toFixed(2)}px, ${(py * d + scrollY0 * d * .02).toFixed(2)}px, 0)`;
+    });
   };
-  chips.addEventListener("click", e => {
-    const b = e.target.closest(".chip"); if (!b) return;
-    group = b.dataset.g;
-    chips.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b));
+  if (finePointer.matches && !reduced.matches) {
+    $(".hero").addEventListener("pointermove", e => {
+      const r = hero.getBoundingClientRect();
+      tx = ((e.clientX - r.left) / r.width - .5) * 2; ty = ((e.clientY - r.top) / r.height - .5) * 2;
+    });
+    $(".hero").addEventListener("pointerleave", () => { tx = 0; ty = 0; });
+  }
+
+  const ctx = cv.getContext("2d");
+  const R = 0.2; // obstacle radius, fraction of the shorter side
+  let W = 0, H = 0, dpr = 1, parts = [], dust = [], running = false, last = 0;
+  const rand = (a, b) => a + Math.random() * (b - a);
+  const colors = ["198,255,61", "198,255,61", "198,255,61", "111,211,208", "242,236,220"];
+  const cx = () => W * .58, cy = () => H * .47;
+
+  // potential flow past a cylinder: streamlines bend around the core
+  const field = (x, y) => {
+    const s = Math.min(W, H) * R, dx = x - cx(), dy = y - cy();
+    const r2 = dx * dx + dy * dy || 1, k = s * s / r2;
+    const u = 1 - k * (dx * dx - dy * dy) / r2;
+    const v = -2 * k * dx * dy / r2;
+    // gentle circulation so the trails sweep rather than mirror
+    const g = .22 * s / Math.sqrt(r2);
+    return [u - g * dy / Math.sqrt(r2), v + g * dx / Math.sqrt(r2)];
+  };
+  const spawn = p => {
+    p.x = rand(-.05, .2) * W; p.y = rand(.04, .96) * H; p.age = 0;
+    p.life = rand(260, 520); p.sp = rand(.9, 1.7) * (W / 560);
+    p.c = colors[(Math.random() * colors.length) | 0]; p.w = rand(.8, 1.9);
+    p.px = p.x; p.py = p.y; return p;
+  };
+  const size = () => {
+    const r = cv.getBoundingClientRect();
+    dpr = Math.min(devicePixelRatio || 1, W > 0 && r.width < 520 ? 1.5 : 2);
+    W = Math.max(1, Math.round(r.width)); H = Math.max(1, Math.round(r.height));
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = W < 520 ? 34 : 64;
+    parts = Array.from({ length: n }, () => { const p = spawn({}); p.x = rand(0, W); p.px = p.x; return p; });
+    dust = Array.from({ length: W < 520 ? 14 : 26 }, () => ({ x: rand(0, W), y: rand(0, H), r: rand(.6, 1.6), s: rand(.04, .16), a: rand(.2, .6) }));
+  };
+  const step = (dt, draw = true) => {
+    for (const p of parts) {
+      const [u, v] = field(p.x, p.y);
+      const sx = p.x - cx(), sy = p.y - cy(), inside = sx * sx + sy * sy < (Math.min(W, H) * R * .96) ** 2;
+      p.px = p.x; p.py = p.y;
+      p.x += u * p.sp * dt; p.y += v * p.sp * dt; p.age += dt;
+      if (draw) {
+        const near = 1 - Math.min(1, Math.hypot(sx, sy) / (Math.min(W, H) * .6));
+        ctx.strokeStyle = `rgba(${p.c},${(.28 + near * .55).toFixed(2)})`;
+        ctx.lineWidth = p.w; ctx.lineCap = "round";
+        ctx.beginPath(); ctx.moveTo(p.px, p.py); ctx.lineTo(p.x, p.y); ctx.stroke();
+      }
+      if (inside || p.x > W + 20 || p.y < -20 || p.y > H + 20 || p.age > p.life) spawn(p);
+    }
+  };
+  const frame = t => {
+    if (!running) return;
+    const dt = Math.min(2.2, (t - last) / 16.67 || 1); last = t;
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.fillStyle = "rgba(0,0,0,.075)"; ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = "lighter";
+    step(dt);
+    ctx.fillStyle = "rgba(242,236,220,1)";
+    for (const d of dust) {
+      d.y -= d.s * dt; d.x += Math.sin((t / 2600) + d.r * 9) * .12;
+      if (d.y < -4) { d.y = H + 4; d.x = rand(0, W); }
+      ctx.globalAlpha = d.a * .55; ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, 6.2832); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    applyParallax();
+    requestAnimationFrame(frame);
+  };
+  const paintStatic = () => {
+    ctx.clearRect(0, 0, W, H); ctx.globalCompositeOperation = "lighter";
+    parts.forEach(p => { p.x = rand(-.05, .1) * W; p.px = p.x; });
+    for (let i = 0; i < 230; i++) step(1.6);
+    ctx.fillStyle = "rgba(242,236,220,.5)";
+    dust.forEach(d => { ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, 6.2832); ctx.fill(); });
+  };
+  const start = () => { if (running || reduced.matches || document.hidden || !heroVisible) return; running = true; last = performance.now(); requestAnimationFrame(frame); };
+  const stop = () => { running = false; };
+  size();
+  if (reduced.matches) paintStatic(); else start();
+  if ("ResizeObserver" in window) {
+    let rt; new ResizeObserver(() => { clearTimeout(rt); rt = setTimeout(() => { size(); if (reduced.matches) paintStatic(); }, 120); }).observe(cv);
+  }
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(es => { heroVisible = es[0].isIntersecting; heroVisible ? start() : stop(); }).observe(hero);
+  }
+  document.addEventListener("visibilitychange", () => document.hidden ? stop() : start());
+  addEventListener("scroll", () => { scrollY0 = Math.min(scrollY, 600); }, { passive: true });
+  reduced.addEventListener?.("change", () => { if (reduced.matches) { stop(); paintStatic(); } else start(); });
+
+  /* ---------- tabs (roving tabindex, arrows/Home/End) ---------- */
+  const tabs = (list, onSelect) => {
+    const items = $$('[role="tab"]', list);
+    const select = (t, focus) => {
+      items.forEach(i => { const on = i === t; i.setAttribute("aria-selected", on); i.tabIndex = on ? 0 : -1; });
+      onSelect(t); if (focus) t.focus();
+    };
+    items.forEach((t, i) => {
+      t.addEventListener("click", () => select(t));
+      t.addEventListener("keydown", e => {
+        const k = e.key; let n = null;
+        if (k === "ArrowRight" || k === "ArrowDown") n = items[(i + 1) % items.length];
+        else if (k === "ArrowLeft" || k === "ArrowUp") n = items[(i - 1 + items.length) % items.length];
+        else if (k === "Home") n = items[0]; else if (k === "End") n = items[items.length - 1];
+        if (n) { e.preventDefault(); select(n, true); }
+      });
+    });
+    return select;
+  };
+  tabs($("#install .tabs"), t => $$("#install .panel").forEach(p => { p.hidden = p.id !== t.getAttribute("aria-controls"); }));
+
+  /* ---------- library: workflows + personas ---------- */
+  const PFX = "/senior-consulting-agents:";
+  const workflows = [
+    ["management-report", "Understand financial and operating performance", "Reconciled report, variance tables and actions"],
+    ["supplier-risk", "Decide how to manage a supplier dependency", "Decision memo, risk register and evidence requests"],
+    ["proposal", "Respond to a buyer with feasible commitments", "Proposal, requirements matrix and fee calculation"],
+    ["engage", "Route an unfamiliar or cross-practice business request", "Scoped engagement and consolidated deliverable"],
+    ["review", "Challenge a draft against evidence and its brief", "Corrections and separate review statuses"],
+    ["risk-assessment", "Map business risks to controls and remediation", "Risk register, control gaps and roadmap"],
+    ["cyber-review", "Evaluate cyber evidence and readiness", "Supported findings and remediation priorities"],
+    ["due-diligence", "Assess transaction issues and exposures", "Red flags, adjustments and information requests"],
+    ["valuation", "Structure a supported valuation analysis", "Approach, model outline and supported sensitivities"],
+    ["audit-plan", "Prepare audit scope and planned procedures", "Planning memo and evidence-linked risk assessment"],
+    ["tax-memo", "Analyze a defined tax question", "Jurisdiction-specific draft with verified authority or explicit gaps"],
+    ["esg", "Assess sustainability reporting readiness", "Applicability assessment, gaps and action plan"],
+    ["interview-prep", "Develop professional-services team capability", "Targeted practice, case exercises and feedback"],
+  ];
+  const personas = [["audit-partner", "Audit Engagement Partner", "Audit and accounting"], ["audit-senior-manager", "Audit Senior Manager (External Audit)", "Audit and accounting"], ["financial-reporting-ifrs", "IFRS Technical Accounting Director", "Audit and accounting"], ["us-gaap-sec-reporting", "US GAAP & SEC Reporting Senior Manager", "Audit and accounting"], ["sox-icfr", "SOX / ICFR Controls Director", "Audit and accounting"], ["it-audit-itgc", "IT Audit / ITGC Senior Manager", "Audit and accounting"], ["forensic-data-analytics-audit", "Audit Data & Analytics Lead", "Audit and accounting"], ["public-sector-audit", "Government & Public Sector Audit Senior Manager", "Audit and accounting"], ["corporate-tax-partner", "Corporate Tax Partner", "Tax"], ["international-tax", "International Tax Senior Manager", "Tax"], ["transfer-pricing", "Transfer Pricing Director", "Tax"], ["indirect-tax", "Indirect Tax (VAT/GST/Sales Tax) Senior Manager", "Tax"], ["mergers-acquisitions-tax", "M&A Tax Director", "Tax"], ["global-mobility-tax", "Global Mobility Services Senior Manager", "Tax"], ["private-enterprise-tax", "Private Enterprise & Family Office Tax Senior Manager", "Tax"], ["tax-technology", "Tax Technology & Transformation Director", "Tax"], ["tax-controversy", "Tax Controversy & Dispute Resolution Senior Manager", "Tax"], ["management-consulting-partner", "Management Consulting Partner", "Business and technology"], ["strategy-director", "Strategy Director", "Business and technology"], ["finance-transformation", "Finance Transformation Senior Manager", "Business and technology"], ["operations-supply-chain", "Operations & Supply Chain Director", "Business and technology"], ["people-change", "People & Change Senior Manager", "Business and technology"], ["customer-advisory", "Customer & Digital Experience Director", "Business and technology"], ["technology-consulting-architect", "Technology Consulting Director / Enterprise Architect", "Business and technology"], ["ai-data-analytics", "AI & Data Analytics Director", "Business and technology"], ["internal-audit", "Internal Audit Director (Outsourced/Co-sourced)", "Risk and cyber"], ["enterprise-risk", "Enterprise Risk Management Senior Manager", "Risk and cyber"], ["regulatory-compliance-fs", "Financial Services Regulatory Director", "Risk and cyber"], ["financial-risk-quant", "Financial Risk & Quantitative Modeling Senior Manager", "Risk and cyber"], ["cyber-security", "Cyber Security Director", "Risk and cyber"], ["privacy-data-protection", "Privacy & Data Protection Senior Manager", "Risk and cyber"], ["forensic-investigations", "Forensic Investigations Director", "Forensic"], ["anti-financial-crime", "Anti-Money Laundering & Sanctions Senior Manager", "Forensic"], ["dispute-expert-witness", "Disputes & Expert Witness Director", "Forensic"], ["deal-advisory-partner", "Deal Advisory (M&A) Partner", "Deals and valuation"], ["financial-due-diligence", "Financial Due Diligence (Transaction Services) Director", "Deals and valuation"], ["valuations", "Valuations Senior Manager", "Deals and valuation"], ["corporate-finance-modeling", "Corporate Finance & Financial Modeling Director", "Deals and valuation"], ["restructuring", "Restructuring & Turnaround Director", "Deals and valuation"], ["integration-separation", "M&A Integration & Separation Senior Manager", "Deals and valuation"], ["infrastructure-advisory", "Infrastructure & Project Finance Director", "Deals and valuation"], ["esg-advisory", "ESG Strategy & Decarbonisation Director", "ESG"], ["esg-assurance", "ESG & Sustainability Assurance Director", "ESG"], ["sector-financial-services", "Financial Services Industry Leader", "Sector context"], ["sector-energy-resources", "Energy, Natural Resources & Chemicals Industry Leader", "Sector context"], ["sector-healthcare-life-sciences", "Healthcare & Life Sciences Industry Leader", "Sector context"], ["sector-tmt", "Technology, Media & Telecom Industry Leader", "Sector context"], ["sector-government", "Government & Public Sector Advisory Director", "Sector context"], ["sector-consumer-retail", "Consumer & Retail Industry Leader", "Sector context"], ["sector-industrial-manufacturing", "Industrial Manufacturing & Automotive Industry Leader", "Sector context"], ["quality-risk-management", "Risk Management & Professional Practice Partner", "Engagement and career"], ["proposal-business-development", "Pursuits & Business Development Director", "Engagement and career"], ["engagement-project-manager", "Engagement & PMO Director", "Engagement and career"], ["learning-career-coach", "Talent, Learning & Career Coach (Big Four)", "Engagement and career"]]; // [id, role, practice]
+  const groups = ["All", ...new Set(personas.map(a => a[2]))];
+  let view = "wf", group = "All", query = "";
+  const chips = $("#chips"), grid = $("#lib-panel"), count = $("#count"), q = $("#q");
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  chips.innerHTML = groups.map(g => {
+    const n = g === "All" ? personas.length : personas.filter(a => a[2] === g).length;
+    return `<button type="button" class="chip" aria-pressed="${g === "All"}" data-g="${esc(g)}">${esc(g)}<em>${n}</em></button>`;
+  }).join("");
+  const render = () => {
+    const needle = query.trim().toLowerCase();
+    chips.hidden = view !== "ps";
+    let html = "", n = 0;
+    if (view === "wf") {
+      const list = workflows.filter(([id, d, o]) => !needle || `${id} ${d} ${o}`.toLowerCase().includes(needle));
+      n = list.length;
+      html = list.map(([id, d, o]) => `<button type="button" class="item" data-copy="${PFX}${id}" data-what="/${id}"><span class="t">Workflow</span><span class="r">${esc(id)}</span><span class="d">${esc(d)}.</span><span class="d">Output: ${esc(o)}</span><code>${PFX}${id}</code><span class="cp" aria-hidden="true">Copy</span></button>`).join("");
+    } else {
+      const list = personas.filter(([id, role, g]) => (group === "All" || g === group) && (!needle || `${id} ${role} ${g}`.toLowerCase().includes(needle)));
+      n = list.length;
+      html = list.map(([id, role, g]) => `<button type="button" class="item" data-copy="${esc(id)}" data-what="${esc(id)}"><span class="t">${esc(g)}</span><span class="r">${esc(role)}</span><code>${esc(id)}</code><span class="cp" aria-hidden="true">Copy</span></button>`).join("");
+    }
+    grid.innerHTML = html || `<p class="empty">Nothing matches “${esc(query)}”. <a href="https://github.com/Lameda12/Firmcraft-skill/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contribute one?</a></p>`;
+    const total = view === "wf" ? workflows.length : personas.length;
+    count.textContent = `Showing ${n} of ${total} ${view === "wf" ? "workflows" : "personas"}`;
+  };
+  const libSelect = tabs($(".seg"), t => {
+    view = t.dataset.view; grid.setAttribute("aria-labelledby", t.id);
+    q.placeholder = view === "wf" ? "Search workflows: supplier, proposal, review…" : "Search personas: tax, IFRS, cyber, M&A…";
     render();
   });
-  document.getElementById("q").addEventListener("input", e => { query = e.target.value; render(); });
-  grid.addEventListener("click", e => { const b = e.target.closest(".agent"); if (b) copy(b.dataset.id, `Copied ${b.dataset.id}`); });
+  chips.addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    group = b.dataset.g; $$(".chip", chips).forEach(c => c.setAttribute("aria-pressed", c === b)); render();
+  });
+  q.addEventListener("input", () => { query = q.value; render(); });
+  grid.addEventListener("click", async e => {
+    const b = e.target.closest(".item"); if (!b) return;
+    if (await copy(b.dataset.copy)) notify(`Copied ${b.dataset.what}`);
+  });
   render();
-
-  // boardroom transcript
-  const script = [
-    ["you", "user", "/engage Canadian SaaS, $40M ARR, prepping a US IPO. Where do we start?"],
-    ["router", "sys", "Staffing: audit-partner, sox-icfr, international-tax"],
-    ["audit-partner", "", "Before anyone says anything clever: is this an audit client? Independence check first."],
-    ["sox-icfr", "", "Year one as an SEC filer. Your ITGCs are a spreadsheet named FINAL_v7. We need to talk."],
-    ["international-tax", "", "Pillar Two would like a word. Several words, actually."],
-    ["strategy-director", "", "Can we at least agree on the problem statement?"],
-    ["management-consulting-partner", "", "Let's put it in a 2x2."],
-    ["quality-risk-management", "", "Nobody is signing anything until a human reviews this."],
-    ["engagement-project-manager", "", "We are 40 minutes over. Consolidating into one deliverable."],
-    ["router", "sys", "Deliverable ready: IPO readiness memo, 3 workstreams, 14 actions."],
-  ];
-  const room = document.getElementById("room");
-  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const line = ([who, cls, text]) => {
-    const el = document.createElement("div");
-    el.className = "msg";
-    el.innerHTML = `<span class="who ${cls}">${who}</span><p></p>`;
-    room.append(el);
-    while (room.children.length > 7) room.firstElementChild.remove();
-    return el.querySelector("p");
-  };
-  if (reduced) {
-    script.slice(-7).forEach(m => { line(m).textContent = m[2]; });
-  } else {
-    let i = 0;
-    const next = () => {
-      if (i === script.length) { i = 0; room.innerHTML = ""; }
-      const m = script[i++], p = line(m);
-      let c = 0;
-      const caret = document.createElement("span"); caret.className = "caret";
-      const type = () => {
-        p.textContent = m[2].slice(0, ++c); p.append(caret);
-        if (c < m[2].length) setTimeout(type, 14 + Math.random() * 22);
-        else { caret.remove(); setTimeout(next, i === script.length ? 3200 : 700); }
-      };
-      type();
-    };
-    setTimeout(next, 400);
-  }
 })();
 </script>
 </body>
