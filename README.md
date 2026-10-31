@@ -1,20 +1,40 @@
-# Senior Consulting Agents: landing page
+# Firmcraft: landing page
 
-Install page for [senior-consulting-agents](https://github.com/Lameda12/senior-consulting-agents): 54 senior consulting agents, 11 commands and 2 skills for Claude Code, Codex, Gemini CLI, Cursor and any agent that supports Agent Skills.
+Landing page for [Firmcraft](https://github.com/Lameda12/Firmcraft-skill): 13 B2B workflows, 54 specialist personas (7 of them sector personas) and 2 portable skills for Claude Code, Codex, Gemini CLI and other assistants that can load skills.
 
-One static `index.html`. No build step, no dependencies.
+One static `index.html` plus a few local assets. No build step, no dependencies, no framework.
 
-## Deploy
+## Structure
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Lameda12/sen-consult-webpage)
+| Path | What it is |
+|---|---|
+| `index.html` | The whole page: styles, inline SVG illustrations, markup and a small vanilla script |
+| `assets/firmcraft-mascot.{webp,png}` | The beaver mascot from the product repo, resized, proportions unchanged |
+| `assets/og.png` | 1200 x 630 social preview |
+| `assets/favicon.svg` | Favicon |
+| `vercel.json` | Hosting config (clean URLs and security headers), unchanged |
 
-Or from the CLI:
+The three featured workflow thumbnails (management reporting, supplier risk, proposals) and the hero core are hand-written inline SVG. The hero trails are a small canvas flow-field (potential flow around a cylinder) that pauses when the hero is offscreen or the tab is hidden.
 
-```bash
-npx vercel --prod
-```
+## Motion and accessibility
 
-Vercel detects a static site automatically. Leave Framework Preset as "Other" and the build command empty.
+- Animations use transform and opacity (plus dash offsets on a few thin SVG lines) and pause when offscreen.
+- Cursor tilt and hero parallax only run with a fine pointer; there is no scroll hijacking or custom cursor.
+- `prefers-reduced-motion` gives a complete static page: no reveals, no animation, one painted frame of the flow field.
+- Tabs and filters follow WAI-ARIA patterns (roving tabindex, arrow/Home/End keys), focus rings are always visible, and the library announces result counts.
+
+## Content source of truth
+
+Counts, workflow names, persona ids and install commands come from [Lameda12/Firmcraft-skill](https://github.com/Lameda12/Firmcraft-skill). The installed identifiers are still `senior-consulting-agents` and `consulting-deliverable-standards`; `/firmcraft:…` commands do not exist, so the page never shows them.
+
+When the product repo changes, update these in `index.html`:
+
+- the hero and section copy that mentions 13 workflows / 54 personas / 7 sector personas / 2 skills
+- the `workflows` array (from the README's "All workflows" table)
+- the `personas` array (ids and role titles from `agents/*.md`, grouped by `scripts/practices.json`)
+- the install snippets
+
+The example section uses the synthetic figures from the product README's quick start and is labeled illustrative.
 
 ## Run locally
 
@@ -22,10 +42,18 @@ Vercel detects a static site automatically. Leave Framework Preset as "Other" an
 npx serve .
 ```
 
-## Edit
+Fonts (Geist, Geist Mono, Instrument Serif) load from Google Fonts with system fallbacks, so the page stays usable offline.
 
-Everything lives in `index.html`: commands and agents are plain arrays near the bottom of the `<script>` block. Update them when the main repo adds personas.
+## Deploy
+
+Vercel detects a static site automatically. Leave Framework Preset as "Other" and the build command empty.
+
+```bash
+npx vercel --prod
+```
+
+`og:image` and `twitter:image` use the relative path `assets/og.png`. Some crawlers need an absolute URL, so set it to your production domain once it is fixed.
 
 ## License
 
-MIT. Unofficial; not affiliated with or endorsed by any professional-services firm.
+MIT. Unofficial; not affiliated with or endorsed by any professional-services firm. Outputs of the product are AI drafts for qualified review.
